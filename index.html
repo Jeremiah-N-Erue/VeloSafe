@@ -310,7 +310,7 @@ section { padding:96px 5%; }
 
 /* ─── PROBLEM ─── */
 .problem { background:var(--off-white); }
-.problem-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:24px; margin-top:56px; }
+.problem-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:56px; }
 .problem-card {
   background:var(--white); border-radius:20px; padding:32px;
   border:1px solid var(--gray-100); transition:transform .3s, box-shadow .3s;
@@ -371,7 +371,7 @@ section { padding:96px 5%; }
   height:1px; background:linear-gradient(90deg, var(--teal), #5DCAA5 50%, var(--teal));
   opacity:.25;
 }
-.steps-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:32px; }
+.steps-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:32px; }
 @media (min-width:700px) { .steps-connector { display:block; } }
 .step-card { text-align:center; padding:0 16px; }
 .step-num {
@@ -739,26 +739,32 @@ footer {
     <div class="reveal">
       <div class="section-label">The Problem</div>
       <h2 class="section-title">Urban Mobility in Lagos is Broken</h2>
-      <p class="section-sub">Despite explosive smartphone adoption and a growing middle class, Lagos riders face a market defined by danger, opacity, and distrust.</p>
+      <p class="section-sub">Lagos is the world's #1 city for daily commuting frequency — yet the platforms serving its 21M+ residents are defined by safety failures, opacity, and missed economic opportunity.</p>
     </div>
     <div class="problem-grid">
       <div class="problem-card reveal stagger-1">
         <div class="problem-icon red">🚨</div>
-        <div class="problem-stat">73%</div>
-        <h3>Riders fear for safety</h3>
-        <p>Nearly three-quarters of ride-hailing users in Lagos report at least one safety incident or near-miss. Driver identity fraud and route deviations remain pervasive.</p>
+        <div class="problem-stat">96%</div>
+        <h3>Riders depend on ride-hailing for safety</h3>
+        <p>96% of Nigerian passengers choose ride-hailing specifically when public transport feels unsafe — yet the platforms themselves remain poorly regulated, with Lagos forcing Uber into compliance over safety data-sharing failures in 2024.</p>
       </div>
       <div class="problem-card reveal stagger-2">
         <div class="problem-icon amber">⚡</div>
         <div class="problem-stat">3–5×</div>
         <h3>Surge pricing unpredictability</h3>
-        <p>Competitors levy aggressive surge multipliers during peak hours, eroding rider trust and pricing out lower-income commuters on essential corridors.</p>
+        <p>Incumbents levy aggressive surge multipliers during peak hours, eroding rider trust and pricing out lower-income commuters. Nigeria's FCCPC launched formal investigations into Bolt and Uber pricing practices in 2024.</p>
       </div>
       <div class="problem-card reveal stagger-3">
         <div class="problem-icon blue">🚗</div>
-        <div class="problem-stat">35%+</div>
-        <h3>Driver churn from high commissions</h3>
-        <p>Bolt and Uber extract 25–30% from every fare. Financially squeezed drivers moonlight illegally or abandon platforms entirely, degrading service quality.</p>
+        <div class="problem-stat">25–30%</div>
+        <h3>Crippling driver commissions</h3>
+        <p>Bolt and Uber extract up to 30% from every fare. Drivers staged mass protests across Nigeria in 2024–25 over unsustainable earnings — leading to service degradation and rising driver churn across the Lagos market.</p>
+      </div>
+      <div class="problem-card reveal stagger-4">
+        <div class="problem-icon blue">🏪</div>
+        <div class="problem-stat">56%</div>
+        <h3>SMEs locked out of mobility</h3>
+        <p>56% of Nigerian MSMEs rely solely on social media to sell — with no access to embedded commerce within mobility platforms. Nigeria's $9.35B e-commerce market remains disconnected from the millions of daily ride-hailing interactions.</p>
       </div>
     </div>
   </div>
@@ -769,8 +775,8 @@ footer {
   <div class="section-inner">
     <div class="reveal">
       <div class="section-label">Our Solution</div>
-      <h2 class="section-title">AI-Powered Safety, Built for Lagos</h2>
-      <p class="section-sub">VeloSafe reimagines ride-hailing from the ground up — with technology that verifies every driver, monitors every trip, and prices every fare transparently.</p>
+      <h2 class="section-title">Safety Meets Commerce — Built for Africa</h2>
+      <p class="section-sub">VeloSafe reimagines ride-hailing from the ground up — verifying every driver, monitoring every trip, and embedding a commerce marketplace that turns every ride into an economic opportunity for riders, drivers, and businesses.</p>
     </div>
     <div class="solution-grid">
       <div class="feature-list reveal-left">
@@ -802,6 +808,13 @@ footer {
             <p>The lowest commission structure in the Lagos market. Higher driver earnings mean lower churn, better service quality, and a loyal, growing supply side.</p>
           </div>
         </div>
+        <div class="feature-item">
+          <div class="feature-icon">🏪</div>
+          <div>
+            <h3>Embedded Commerce Marketplace</h3>
+            <p>SMEs, merchants, and service providers can sell directly within the VeloSafe ecosystem — reaching millions of daily commuters. Riders discover and transact with local businesses seamlessly during every journey.</p>
+          </div>
+        </div>
       </div>
       <div class="solution-visual reveal-right">
         <div class="sv-title">Platform Metrics vs Competitors</div>
@@ -809,7 +822,7 @@ footer {
         <div class="sv-metric"><span class="sv-metric-label">Driver verification</span><span class="sv-metric-val green">AI multi-layer</span></div>
         <div class="sv-metric"><span class="sv-metric-label">Surge pricing</span><span class="sv-metric-val green">None (flat-rate)</span></div>
         <div class="sv-metric"><span class="sv-metric-label">Real-time monitoring</span><span class="sv-metric-val green">Full trip</span></div>
-        <div class="sv-metric"><span class="sv-metric-label">Target corridor</span><span class="sv-metric-val">Lagos Island – Lekki – VI</span></div>
+        <div class="sv-metric"><span class="sv-metric-label">Embedded commerce</span><span class="sv-metric-val green">SME marketplace</span></div>
         <div class="sv-metric"><span class="sv-metric-label">SOS response</span><span class="sv-metric-val amber">&lt; 90 seconds</span></div>
       </div>
     </div>
@@ -851,6 +864,14 @@ footer {
           <h3>Arrive Safe, Every Time</h3>
           <p>Live GPS monitoring tracks every kilometre. Route deviations trigger instant alerts. Our safety desk is on call around the clock. Pay securely at destination.</p>
         </div>
+        <div class="step-card stagger-4">
+          <div class="step-num">
+            <span class="step-num-text">4</span>
+            <div class="step-badge">🏪</div>
+          </div>
+          <h3>Shop the Marketplace</h3>
+          <p>Discover SMEs, merchants, and services embedded directly in the app. Order food, book services, or support local businesses — all within your ride, with seamless in-app payment.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -870,7 +891,7 @@ footer {
           <div class="why-point-icon">📱</div>
           <div>
             <h4>Smartphone penetration has crossed a tipping point</h4>
-            <p>Nigeria crossed 50% smartphone penetration in 2024. The addressable audience of Lagos commuters with app-capable devices is now larger than the entire population of many African nations.</p>
+            <p>Nigeria reached 66% smartphone penetration in 2025, with 140 million smartphone users — one of the fastest adoption rates on the continent. The median population age is just 18, creating a massive cohort of digital-native commuters.</p>
           </div>
         </div>
         <div class="why-point">
@@ -898,8 +919,8 @@ footer {
       <div class="why-visual reveal-right" id="trendCard">
         <div class="why-visual-title">Market Tailwinds — Lagos (2024)</div>
         <div class="trend-item">
-          <div class="trend-top"><span>Smartphone penetration</span><span class="trend-pct">54%</span></div>
-          <div class="trend-bar-wrap"><div class="trend-bar" data-w="54%"></div></div>
+          <div class="trend-top"><span>Smartphone penetration</span><span class="trend-pct">66%</span></div>
+          <div class="trend-bar-wrap"><div class="trend-bar" data-w="66%"></div></div>
         </div>
         <div class="trend-item">
           <div class="trend-top"><span>Ride-hailing adoption (urban)</span><span class="trend-pct">67%</span></div>
@@ -927,24 +948,24 @@ footer {
   <div class="section-inner">
     <div class="reveal">
       <div class="section-label">Market Opportunity</div>
-      <h2 class="section-title">A $2.1B Market, Ripe for Disruption</h2>
-      <p class="section-sub">Nigeria's ride-hailing sector is among the fastest-growing in sub-Saharan Africa — yet safety and trust remain largely unaddressed by incumbents.</p>
+      <h2 class="section-title">A $10.8B+ Combined Market Opportunity</h2>
+      <p class="section-sub">Nigeria's smart mobility market is valued at $1.5B and growing at 12.56% CAGR — and with an embedded commerce marketplace, VeloSafe addresses Nigeria's $9.35B e-commerce market simultaneously.</p>
     </div>
     <div class="market-grid">
       <div class="market-card reveal stagger-1">
-        <div class="big-num">$2.1B</div>
-        <div class="num-label">TAM — Nigeria</div>
-        <p>Total addressable ride-hailing market across Nigeria's tier-1 cities, growing at 14% CAGR through 2028.</p>
+        <div class="big-num">$1.5B</div>
+        <div class="num-label">TAM — Nigeria Smart Mobility</div>
+        <p>Nigeria's smart mobility and ride-hailing market, projected to reach 42.88M users by 2029 at a 12.56% CAGR — among the fastest-growing in sub-Saharan Africa.</p>
       </div>
       <div class="market-card reveal stagger-2">
-        <div class="big-num">$840M</div>
+        <div class="big-num">$600M</div>
         <div class="num-label">SAM — Lagos</div>
-        <p>Serviceable addressable market in Lagos, Africa's largest megacity with 21M+ residents and 4M daily commuters.</p>
+        <p>Serviceable market in Lagos — Africa's #1 daily commuting city, where 83.4% of residents commute every day across 21M+ population.</p>
       </div>
       <div class="market-card reveal stagger-3">
         <div class="big-num">$42M</div>
         <div class="num-label">SOM — Year 3</div>
-        <p>Conservatively attainable share within our pilot corridor, with full Lagos Island–Lekki–VI penetration.</p>
+        <p>Conservatively attainable share within our pilot corridor, with full Lagos Island–Lekki–VI penetration across both mobility and marketplace revenue streams.</p>
       </div>
     </div>
   </div>
