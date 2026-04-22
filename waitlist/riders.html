@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Join the Waitlist — VeloSafe for Riders</title>
+  <meta name="description" content="Nigeria's safest way to move. Every driver verified. Every trip tracked. Every ride accountable. Join the VeloSafe rider waitlist for Lagos." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="VeloSafe — Nigeria's safest way to move" />
+  <meta property="og:description" content="Join the waitlist for early access. Launching in Lagos, 2026." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://jeremiah-n-erue.github.io/VeloSafe/waitlist/riders.html" />
+
+  <!-- Fonts — DM Serif Display + DM Sans (matching landing page) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2L3 7v6c0 5 4 9 9 10 5-1 9-5 9-10V7l-9-5z' fill='%230D9E75'/%3E%3Cpath d='M9 12l2 2 4-4' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E" />
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="https://jeremiah-n-erue.github.io/VeloSafe/" class="logo">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2L3 7v6c0 5 4 9 9 10 5-1 9-5 9-10V7l-9-5z" stroke="#0D9E75" stroke-width="2" fill="#E1F5EE"/>
+          <path d="M9 12l2 2 4-4" stroke="#0D9E75" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        VeloSafe
+      </a>
+      <div class="nav-links">
+        <a href="https://jeremiah-n-erue.github.io/VeloSafe/#problem">Safety</a>
+        <a href="riders.html">For riders</a>
+        <a href="drivers.html">For drivers</a>
+        <a href="mailto:velosafetechnologies@gmail.com" class="nav-cta">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <span class="eyebrow">Launching in Lagos · 2026</span>
+    <h1>Nigeria's safest way <em>to move.</em></h1>
+    <p class="hero-sub">
+      Every driver verified. Every trip tracked. Every ride accountable. Join the waitlist and be among the first to ride with a platform built around your safety.
+    </p>
+    <div class="hero-badges">
+      <span>
+        <svg class="check-icon" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#0D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        BVN-verified drivers
+      </span>
+      <span>
+        <svg class="check-icon" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#0D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Live trip sharing
+      </span>
+      <span>
+        <svg class="check-icon" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#0D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        24/7 SOS support
+      </span>
+    </div>
+  </section>
+
+  <!-- Form -->
+  <div class="form-wrap">
+    <div class="form-card">
+
+      <!-- Form view -->
+      <div id="form-view">
+
+        <!-- Role toggle -->
+        <p class="role-label">I'm joining as a</p>
+        <div class="role-toggle">
+          <a href="riders.html" class="role-option active">
+            <div class="role-option-title">
+              <span class="role-dot"></span>
+              Rider
+            </div>
+            <p class="role-option-desc">I want safer rides across Lagos</p>
+          </a>
+          <a href="drivers.html" class="role-option">
+            <div class="role-option-title">
+              <span class="role-dot"></span>
+              Driver
+            </div>
+            <p class="role-option-desc">I want to earn with VeloSafe</p>
+          </a>
+        </div>
+
+        <!-- FORMSPREE ENDPOINT: replace YOUR_RIDER_FORM_ID -->
+        <form id="rider-form" action="https://formspree.io/f/YOUR_RIDER_FORM_ID" method="POST">
+
+          <input type="hidden" name="_subject" value="New VeloSafe rider waitlist signup" />
+          <input type="hidden" name="role" value="rider" />
+
+          <div class="field-group">
+            <div class="field">
+              <label for="r-name">Full name</label>
+              <input type="text" id="r-name" name="full_name" placeholder="Jane Adekunle" required />
+              <div class="field-error">Please enter your full name</div>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="r-email">Email</label>
+                <input type="email" id="r-email" name="email" placeholder="jane@example.com" required />
+                <div class="field-error">Please enter a valid email</div>
+              </div>
+              <div class="field">
+                <label for="r-phone">Phone (NG)</label>
+                <input type="tel" id="r-phone" name="phone" placeholder="+234 801 234 5678" required pattern="[\+0-9\s\-]{10,}" />
+                <div class="field-error">Please enter a valid Nigerian phone number</div>
+              </div>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="r-area">Primary area in Lagos</label>
+                <select id="r-area" name="area" required>
+                  <option value="">Select your area</option>
+                  <option>Lekki</option>
+                  <option>Victoria Island</option>
+                  <option>Ikoyi</option>
+                  <option>Ajah</option>
+                  <option>Ikeja</option>
+                  <option>Yaba</option>
+                  <option>Surulere</option>
+                  <option>Lagos Island</option>
+                  <option>Other</option>
+                </select>
+                <div class="field-error">Please select your area</div>
+              </div>
+              <div class="field">
+                <label for="r-frequency">Rides per week</label>
+                <select id="r-frequency" name="rides_per_week" required>
+                  <option value="">How often do you ride?</option>
+                  <option>1–3 rides</option>
+                  <option>4–7 rides</option>
+                  <option>8–14 rides</option>
+                  <option>15+ rides</option>
+                </select>
+                <div class="field-error">Please select ride frequency</div>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="r-current">Currently using</label>
+              <select id="r-current" name="current_platform" required>
+                <option value="">Which service do you use most?</option>
+                <option>Bolt</option>
+                <option>Uber</option>
+                <option>inDrive</option>
+                <option>LagRide</option>
+                <option>Street taxis / kabu-kabu</option>
+                <option>Private driver</option>
+                <option>None — I drive myself</option>
+              </select>
+              <div class="field-error">Please select an option</div>
+            </div>
+          </div>
+
+          <!-- Strategic safety question -->
+          <div class="option-group featured" style="margin-bottom: 20px;">
+            <label class="option-group-label">Which safety concern matters most to you?</label>
+            <div class="options-list">
+              <label><input type="radio" name="safety_priority" value="identity_verification" required /> Driver identity verification</label>
+              <label><input type="radio" name="safety_priority" value="trip_tracking" /> Live trip tracking for family</label>
+              <label><input type="radio" name="safety_priority" value="sos_response" /> Emergency SOS response</label>
+              <label><input type="radio" name="safety_priority" value="vehicle_standards" /> Vehicle condition standards</label>
+              <label><input type="radio" name="safety_priority" value="transparent_pricing" /> Transparent, agreed pricing</label>
+            </div>
+          </div>
+
+          <!-- Referral -->
+          <div class="referral-note">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6L12 2z" fill="#C8892A"/>
+            </svg>
+            <span>Refer 3 friends and jump 500 spots in line</span>
+          </div>
+
+          <!-- Consent -->
+          <div class="consent">
+            <label>
+              <input type="checkbox" name="consent" required />
+              <span>I agree to VeloSafe's privacy policy and consent to receive launch updates. Your data is stored in line with NDPR regulations.</span>
+            </label>
+          </div>
+
+          <button type="submit" class="submit-btn" id="r-submit">Secure my spot</button>
+        </form>
+      </div>
+
+      <!-- Success state -->
+      <div class="success-state" id="success-view">
+        <div class="check-circle">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+            <path d="M20 6L9 17l-5-5" stroke="#0D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h2>You're on the list.</h2>
+        <p>We'll email you when early access opens in your area. In the meantime, join our founding riders community for product updates, launch previews, and a direct line to our team.</p>
+
+        <!-- Community invite — primary CTA -->
+        <a href="https://chat.whatsapp.com/YOUR_RIDER_GROUP_INVITE" target="_blank" rel="noopener" class="community-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink: 0;">
+            <path d="M17.5 14.4c-.3-.1-1.8-.9-2-1s-.5-.2-.7.1c-.2.3-.8 1-1 1.2-.2.2-.4.2-.6.1-1.1-.5-2-1-2.9-2.5-.2-.4.2-.4.6-1.2.1-.2 0-.3 0-.4 0-.1-.6-1.5-.8-2-.2-.5-.5-.4-.7-.5h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2 0 1.3.9 2.5 1.1 2.7.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.3-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3.1.8.8-3-.2-.3C4.1 15 3.8 13.5 3.8 12c0-4.5 3.7-8.2 8.2-8.2s8.2 3.7 8.2 8.2-3.7 8.2-8.2 8.2z"/>
+          </svg>
+          Join the founding riders community
+        </a>
+        <p class="community-hint">Private WhatsApp group · Announcement-only</p>
+
+        <div class="share-divider">
+          <span>Or refer a friend to move up the queue</span>
+        </div>
+
+        <div class="share-btns">
+          <button class="share-btn" onclick="shareOn('whatsapp')">Share on WhatsApp</button>
+          <button class="share-btn" onclick="shareOn('twitter')">Share on X</button>
+          <button class="share-btn" onclick="copyLink()">Copy link</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-strip">
+    <div class="stat-card">
+      <p class="stat-value">2,847</p>
+      <p class="stat-label">Riders on waitlist</p>
+    </div>
+    <div class="stat-card">
+      <p class="stat-value">412</p>
+      <p class="stat-label">Drivers pre-vetted</p>
+    </div>
+    <div class="stat-card">
+      <p class="stat-value">18</p>
+      <p class="stat-label">Lagos LGAs covered</p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div>
+      <strong style="color: var(--gray-700); font-weight: 600;">VeloSafe Technologies</strong><br />
+      Safer rides. Stronger cities.
+    </div>
+    <div style="margin-top: 14px;">
+      <a href="mailto:velosafetechnologies@gmail.com">velosafetechnologies@gmail.com</a>
+    </div>
+    <div style="margin-top: 14px; color: var(--gray-400); font-size: 11px;">
+      Nigeria · NDPR compliant · &copy; 2026 VeloSafe
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    const form = document.getElementById('rider-form');
+    const formView = document.getElementById('form-view');
+    const successView = document.getElementById('success-view');
+    const submitBtn = document.getElementById('r-submit');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Submitting...';
+
+      try {
+        const formData = new FormData(form);
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          formView.style.display = 'none';
+          successView.classList.add('shown');
+        } else {
+          throw new Error('Submission failed');
+        }
+      } catch (err) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Secure my spot';
+        alert('Sorry, something went wrong. Please try again or email velosafetechnologies@gmail.com');
+      }
+    });
+
+    function shareOn(platform) {
+      const url = encodeURIComponent('https://jeremiah-n-erue.github.io/VeloSafe/waitlist/riders.html');
+      const text = encodeURIComponent("I just joined the VeloSafe waitlist — Nigeria's safest ride-hailing platform launching in Lagos.");
+      const links = {
+        whatsapp: `https://wa.me/?text=${text}%20${url}`,
+        twitter:  `https://twitter.com/intent/tweet?text=${text}&url=${url}`
+      };
+      window.open(links[platform], '_blank');
+    }
+
+    function copyLink() {
+      navigator.clipboard.writeText('https://jeremiah-n-erue.github.io/VeloSafe/waitlist/riders.html');
+      event.target.textContent = 'Copied ✓';
+      setTimeout(() => { event.target.textContent = 'Copy link'; }, 2000);
+    }
+  </script>
+
+</body>
+</html>
