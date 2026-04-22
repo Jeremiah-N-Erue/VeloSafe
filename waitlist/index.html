@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VeloSafe — Nigeria's Safest Way to Move</title>
+  <meta name="description" content="VeloSafe is building real-time safety infrastructure for Lagos commuters. Every driver verified. Every trip tracked. Every ride accountable." />
+
+  <meta property="og:title" content="VeloSafe — Nigeria's Safest Way to Move" />
+  <meta property="og:description" content="Launching in Lagos, 2026. Join the waitlist." />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2L3 7v6c0 5 4 9 9 10 5-1 9-5 9-10V7l-9-5z' fill='%230D9E75'/%3E%3Cpath d='M9 12l2 2 4-4' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E" />
+
+  <style>
+    :root {
+      --navy:       #0B1F3A;
+      --navy-mid:   #163055;
+      --teal:       #0D9E75;
+      --teal-light: #E1F5EE;
+      --gold:       #C8892A;
+      --white:      #FFFFFF;
+      --off-white:  #F7F8FA;
+      --gray-100:   #EEF0F3;
+      --gray-400:   #9EA8B5;
+      --gray-700:   #3D4F62;
+      --font-display: 'DM Serif Display', Georgia, serif;
+      --font-sans:    'DM Sans', system-ui, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      color: var(--navy);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Nav ── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 48px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .nav.scrolled {
+      border-color: var(--gray-100);
+      box-shadow: 0 2px 20px rgba(11,31,58,.06);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-display);
+      font-size: 20px;
+      color: var(--navy);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .nav-links a { color: var(--gray-700); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--navy); }
+
+    .nav-contact {
+      position: relative;
+    }
+
+    .nav-contact-btn {
+      background: var(--navy);
+      color: var(--white) !important;
+      padding: 10px 22px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      border: none;
+      font-family: var(--font-sans);
+      transition: background 0.2s;
+    }
+    .nav-contact-btn:hover { background: var(--teal); }
+
+    .contact-dropdown {
+      display: none;
+      position: absolute;
+      top: calc(100% + 10px);
+      right: 0;
+      background: var(--white);
+      border: 1px solid var(--gray-100);
+      border-radius: 14px;
+      padding: 8px;
+      box-shadow: 0 12px 40px rgba(11,31,58,.12);
+      min-width: 220px;
+      z-index: 200;
+    }
+
+    .contact-dropdown.open { display: block; animation: fadeDown 0.15s ease; }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 14px;
+      border-radius: 10px;
+      font-size: 14px;
+      color: var(--navy);
+      transition: background 0.15s;
+      cursor: pointer;
+    }
+    .contact-item:hover { background: var(--off-white); }
+
+    .contact-item .c-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 18px;
+    }
+
+    .contact-item .c-label { font-weight: 600; font-size: 13px; }
+    .contact-item .c-sub   { font-size: 11px; color: var(--gray-400); margin-top: 1px; }
+
+    @media (max-width: 768px) {
+      .nav { padding: 16px 20px; }
+      .nav-links > a { display: none; }
+    }
+
+    /* ── Hero ── */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(160deg, #0B1F3A 0%, #163055 50%, #0D3D2A 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 60%, rgba(13,158,117,.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* Animated grid lines */
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      animation: gridMove 20s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes gridMove {
+      from { transform: translateY(0); }
+      to   { transform: translateY(60px); }
+    }
+
+    /* Floating orbs */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      pointer-events: none;
+      animation: orbFloat 8s ease-in-out infinite;
+    }
+
+    .orb-1 {
+      width: 400px; height: 400px;
+      background: rgba(13,158,117,.15);
+      top: -100px; left: -100px;
+      animation-delay: 0s;
+    }
+
+    .orb-2 {
+      width: 300px; height: 300px;
+      background: rgba(200,137,42,.1);
+      bottom: -50px; right: -50px;
+      animation-delay: 3s;
+    }
+
+    .orb-3 {
+      width: 200px; height: 200px;
+      background: rgba(13,158,117,.1);
+      top: 40%; right: 10%;
+      animation-delay: 5s;
+    }
+
+    @keyframes orbFloat {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50%       { transform: translateY(-30px) scale(1.05); }
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(13,158,117,.2);
+      border: 1px solid rgba(13,158,117,.4);
+      color: #6EDBB8;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      position: relative;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .pulse-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--teal);
+      animation: pulseDot 2s ease-in-out infinite;
+    }
+
+    @keyframes pulseDot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.4; transform: scale(1.6); }
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(42px, 7vw, 72px);
+      font-weight: 400;
+      line-height: 1.04;
+      letter-spacing: -0.02em;
+      color: var(--white);
+      margin-bottom: 24px;
+      position: relative;
+      animation: fadeUp 0.8s ease 0.15s both;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: #6EDBB8;
+    }
+
+    .hero-sub {
+      font-size: 18px;
+      color: rgba(255,255,255,.7);
+      max-width: 520px;
+      line-height: 1.75;
+      margin-bottom: 40px;
+      position: relative;
+      animation: fadeUp 0.8s ease 0.3s both;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+      animation: fadeUp 0.8s ease 0.45s both;
+      position: relative;
+    }
+
+    .btn-primary-hero {
+      background: var(--teal);
+      color: var(--white);
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-sans);
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 24px rgba(13,158,117,.5);
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-primary-hero:hover {
+      background: #0B8863;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(13,158,117,.6);
+    }
+
+    .btn-secondary-hero {
+      background: rgba(255,255,255,.1);
+      color: var(--white);
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      border: 1px solid rgba(255,255,255,.2);
+      cursor: pointer;
+      font-family: var(--font-sans);
+      transition: background 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-secondary-hero:hover { background: rgba(255,255,255,.15); }
+
+    /* Floating stat cards */
+    .hero-stats {
+      display: flex;
+      gap: 16px;
+      margin-top: 60px;
+      flex-wrap: wrap;
+      justify-content: center;
+      position: relative;
+      animation: fadeUp 0.8s ease 0.6s both;
+    }
+
+    .hero-stat {
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      backdrop-filter: blur(8px);
+      border-radius: 16px;
+      padding: 18px 24px;
+      text-align: center;
+      min-width: 120px;
+      transition: transform 0.3s, background 0.3s;
+    }
+    .hero-stat:hover { transform: translateY(-4px); background: rgba(255,255,255,.12); }
+
+    .hero-stat .sv { font-family: var(--font-display); font-size: 28px; color: #6EDBB8; }
+    .hero-stat .sl { font-size: 11px; color: rgba(255,255,255,.55); margin-top: 4px; letter-spacing: 0.03em; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Section base ── */
+    section { padding: 96px 24px; }
+
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--navy);
+      margin-bottom: 16px;
+    }
+
+    .section-title em { font-style: italic; color: var(--teal); }
+
+    .section-sub {
+      font-size: 17px;
+      color: var(--gray-700);
+      max-width: 560px;
+      line-height: 1.75;
+    }
+
+    /* Reveal animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ── Problem section ── */
+    .problem { background: var(--off-white); }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 56px;
+    }
+
+    @media (max-width: 768px) { .problem-grid { grid-template-columns: 1fr; } }
+
+    .problem-card {
+      background: var(--white);
+      border: 1px solid var(--gray-100);
+      border-radius: 20px;
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .problem-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(11,31,58,.08); }
+
+    .problem-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--teal), transparent);
+    }
+
+    .problem-card .pc-icon { font-size: 32px; margin-bottom: 16px; }
+    .problem-card .pc-stat {
+      font-family: var(--font-display);
+      font-size: 36px;
+      color: var(--navy);
+      margin-bottom: 6px;
+      letter-spacing: -0.02em;
+    }
+    .problem-card .pc-stat span { color: var(--teal); }
+    .problem-card h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+    .problem-card p  { font-size: 13px; color: var(--gray-700); line-height: 1.6; }
+    .problem-card .pc-source { font-size: 10px; color: var(--gray-400); margin-top: 12px; font-style: italic; }
+
+    /* ── How it works ── */
+    .how { background: var(--white); }
+
+    .how-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      margin-top: 56px;
+    }
+
+    @media (max-width: 768px) { .how-grid { grid-template-columns: 1fr; gap: 40px; } }
+
+    .steps { display: flex; flex-direction: column; gap: 32px; }
+
+    .step {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      padding: 20px;
+      border-radius: 16px;
+      transition: background 0.2s;
+      cursor: default;
+    }
+    .step:hover { background: var(--off-white); }
+
+    .step-num {
+      width: 40px; height: 40px;
+      border-radius: 12px;
+      background: var(--teal-light);
+      color: var(--teal);
+      font-weight: 700;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.2s, color 0.2s;
+    }
+    .step:hover .step-num { background: var(--teal); color: var(--white); }
+
+    .step h3 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+    .step p  { font-size: 14px; color: var(--gray-700); line-height: 1.6; }
+
+    /* Phone mockup */
+    .phone-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .phone {
+      width: 260px;
+      background: var(--navy);
+      border-radius: 36px;
+      padding: 20px 16px;
+      box-shadow: 0 32px 80px rgba(11,31,58,.3), 0 0 0 8px rgba(11,31,58,.1);
+      position: relative;
+      animation: phoneFloat 4s ease-in-out infinite;
+    }
+
+    @keyframes phoneFloat {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-12px); }
+    }
+
+    .phone-notch {
+      width: 80px; height: 6px;
+      background: rgba(255,255,255,.15);
+      border-radius: 3px;
+      margin: 0 auto 20px;
+    }
+
+    .phone-screen { background: #0f2a47; border-radius: 20px; padding: 16px; }
+    .phone-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+    .phone-brand  { color: #6EDBB8; font-family: var(--font-display); font-size: 14px; }
+    .phone-status { width: 8px; height: 8px; background: var(--teal); border-radius: 50%; animation: pulseDot 2s infinite; }
+
+    .phone-map {
+      height: 100px;
+      background: linear-gradient(135deg, #0D2A1A, #0B3D26);
+      border-radius: 12px;
+      margin-bottom: 12px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: rgba(255,255,255,.4);
+    }
+
+    .map-pin {
+      position: absolute;
+      width: 12px; height: 12px;
+      background: var(--teal);
+      border-radius: 50%;
+      border: 2px solid white;
+      animation: mapPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes mapPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(13,158,117,.4); }
+      50%       { box-shadow: 0 0 0 10px rgba(13,158,117,0); }
+    }
+
+    .phone-card {
+      background: rgba(255,255,255,.06);
+      border-radius: 10px;
+      padding: 10px 12px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .phone-card-icon { font-size: 18px; }
+    .phone-card-text .pt { font-size: 11px; color: rgba(255,255,255,.8); font-weight: 600; }
+    .phone-card-text .ps { font-size: 10px; color: rgba(255,255,255,.4); margin-top: 2px; }
+
+    .sos-mini {
+      background: rgba(229,57,53,.15);
+      border: 1px solid rgba(229,57,53,.3);
+      border-radius: 10px;
+      padding: 10px;
+      text-align: center;
+      font-size: 11px;
+      color: #ff6b6b;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    /* Glow ring around phone */
+    .phone-glow {
+      position: absolute;
+      width: 320px; height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(13,158,117,.12) 0%, transparent 70%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    /* ── Safety section ── */
+    #safety { background: var(--navy); }
+
+    .safety-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 56px;
+    }
+
+    @media (max-width: 768px) { .safety-grid { grid-template-columns: 1fr; } }
+
+    .safety-card {
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 20px;
+      padding: 28px;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .safety-card:hover { background: rgba(255,255,255,.09); transform: translateY(-4px); }
+
+    .safety-card .sc-icon {
+      width: 48px; height: 48px;
+      background: rgba(13,158,117,.2);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin-bottom: 18px;
+    }
+
+    .safety-card h3 { font-size: 17px; font-weight: 600; color: var(--white); margin-bottom: 10px; }
+    .safety-card p  { font-size: 13px; color: rgba(255,255,255,.55); line-height: 1.7; }
+
+    .safety-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(13,158,117,.15);
+      border: 1px solid rgba(13,158,117,.25);
+      color: #6EDBB8;
+      font-size: 10px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 100px;
+      margin-top: 14px;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── Stats counter ── */
+    .stats-section { background: var(--teal-light); }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) { .stats-row { grid-template-columns: repeat(2, 1fr); } }
+
+    .stat-block { padding: 20px; }
+    .stat-block .sb-val {
+      font-family: var(--font-display);
+      font-size: 48px;
+      color: var(--navy);
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+    .stat-block .sb-val span { color: var(--teal); }
+    .stat-block .sb-lbl { font-size: 13px; color: var(--gray-700); margin-top: 8px; font-weight: 500; }
+    .stat-block .sb-src { font-size: 10px; color: var(--gray-400); margin-top: 4px; font-style: italic; }
+
+    /* ── Verified section ── */
+    .verified { background: var(--white); }
+
+    .verified-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 56px;
+    }
+
+    @media (max-width: 768px) { .verified-grid { grid-template-columns: 1fr; } }
+
+    .verified-card {
+      border: 1px solid var(--gray-100);
+      border-radius: 20px;
+      padding: 32px;
+      transition: box-shadow 0.3s;
+    }
+    .verified-card:hover { box-shadow: 0 12px 40px rgba(11,31,58,.06); }
+
+    .vc-header { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
+    .vc-avatar {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px;
+    }
+    .vc-avatar.rider  { background: var(--teal-light); }
+    .vc-avatar.driver { background: #FFF3E0; }
+
+    .vc-header h3 { font-size: 18px; font-weight: 600; }
+    .vc-header p  { font-size: 13px; color: var(--gray-400); margin-top: 2px; }
+
+    .vc-checks { display: flex; flex-direction: column; gap: 12px; }
+
+    .vc-check {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      color: var(--gray-700);
+    }
+
+    .vc-check-icon {
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      background: var(--teal-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .vc-check-icon svg { width: 12px; height: 12px; }
+
+    .vc-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 24px;
+      background: var(--teal);
+      color: var(--white);
+      padding: 12px 22px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .vc-cta:hover { background: #0B8863; transform: translateY(-1px); }
+    .vc-cta.gold { background: var(--gold); }
+    .vc-cta.gold:hover { background: #B07820; }
+
+    /* ── Founder ── */
+    .founder { background: var(--off-white); }
+
+    .founder-card {
+      max-width: 680px;
+      margin: 0 auto;
+      background: var(--white);
+      border: 1px solid var(--gray-100);
+      border-radius: 24px;
+      padding: 40px;
+      text-align: center;
+      box-shadow: 0 8px 32px rgba(11,31,58,.06);
+    }
+
+    .founder-avatar {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--teal), var(--navy));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-family: var(--font-display);
+      font-size: 28px;
+      margin: 0 auto 20px;
+    }
+
+    .founder-card blockquote {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-style: italic;
+      color: var(--navy);
+      line-height: 1.5;
+      margin-bottom: 20px;
+      letter-spacing: -0.01em;
+    }
+
+    .founder-card .f-name { font-size: 15px; font-weight: 600; color: var(--navy); }
+    .founder-card .f-role { font-size: 13px; color: var(--gray-400); margin-top: 4px; }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: linear-gradient(135deg, var(--navy) 0%, #0D3D2A 100%);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 70% at 50% 50%, rgba(13,158,117,.15) 0%, transparent 70%);
+    }
+
+    .cta-section h2 {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 5vw, 52px);
+      color: var(--white);
+      margin-bottom: 16px;
+      position: relative;
+    }
+    .cta-section h2 em { font-style: italic; color: #6EDBB8; }
+
+    .cta-section p {
+      font-size: 17px;
+      color: rgba(255,255,255,.65);
+      margin-bottom: 36px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+    }
+
+    .cta-btns {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: #070F1C;
+      color: rgba(255,255,255,.4);
+      padding: 40px 48px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      font-size: 12px;
+    }
+
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 18px;
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { color: rgba(255,255,255,.4); transition: color 0.2s; }
+    .footer-links a:hover { color: var(--white); }
+
+    .footer-social { display: flex; gap: 16px; }
+    .footer-social a {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      background: rgba(255,255,255,.06);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,.5);
+      transition: background 0.2s, color 0.2s;
+      font-size: 16px;
+    }
+    .footer-social a:hover { background: var(--teal); color: var(--white); }
+
+    @media (max-width: 600px) {
+      footer { flex-direction: column; text-align: center; padding: 32px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Nav ── -->
+  <nav class="nav" id="main-nav">
+    <a href="index.html" class="nav-logo">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2L3 7v6c0 5 4 9 9 10 5-1 9-5 9-10V7l-9-5z" stroke="#0D9E75" stroke-width="2" fill="#E1F5EE"/>
+        <path d="M9 12l2 2 4-4" stroke="#0D9E75" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      VeloSafe
+    </a>
+
+    <div class="nav-links">
+      <a href="#safety">Safety</a>
+      <a href="riders.html">For riders</a>
+      <a href="drivers.html">For drivers</a>
+
+      <div class="nav-contact">
+        <button class="nav-contact-btn" id="contact-toggle">Contact ▾</button>
+        <div class="contact-dropdown" id="contact-dropdown">
+          <a href="mailto:velosafetechnologies@gmail.com" class="contact-item">
+            <div class="c-icon" style="background:#EEF0F3;">✉️</div>
+            <div>
+              <div class="c-label">Email us</div>
+              <div class="c-sub">velosafetechnologies@gmail.com</div>
+            </div>
+          </a>
+          <a href="https://chat.whatsapp.com/CMh0SfdcGe3As34EkD0he3" target="_blank" rel="noopener" class="contact-item">
+            <div class="c-icon" style="background:#E8F8EE;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="#25D366"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1s-.5-.2-.7.1c-.2.3-.8 1-1 1.2-.2.2-.4.2-.6.1-1.1-.5-2-1-2.9-2.5-.2-.4.2-.4.6-1.2.1-.2 0-.3 0-.4 0-.1-.6-1.5-.8-2-.2-.5-.5-.4-.7-.5h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2 0 1.3.9 2.5 1.1 2.7.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.3-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+            </div>
+            <div>
+              <div class="c-label">WhatsApp</div>
+              <div class="c-sub">Join our community</div>
+            </div>
+          </a>
+          <a href="https://www.instagram.com/velosafetechnologies?igsh=aG00ZW12cHdyd3Fj&utm_source=qr" target="_blank" rel="noopener" class="contact-item">
+            <div class="c-icon" style="background:#FFF0F3;">📸</div>
+            <div>
+              <div class="c-label">Instagram</div>
+              <div class="c-sub">@velosafetechnologies</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── Hero ── -->
+  <section class="hero">
+    <div class="hero-grid"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <div class="hero-eyebrow">
+      <span class="pulse-dot"></span>
+      Lagos Pilot · Opening 2026
+    </div>
+
+    <h1>Nigeria's safest way<br/><em>to move.</em></h1>
+
+    <p class="hero-sub">
+      Every driver verified. Every trip tracked. Every ride accountable. VeloSafe is building real-time safety infrastructure for Lagos.
+    </p>
+
+    <div class="hero-ctas">
+      <a href="riders.html" class="btn-primary-hero">Join Rider Waitlist →</a>
+      <a href="drivers.html" class="btn-secondary-hero">Drive with VeloSafe</a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="sv">#1</div>
+        <div class="sl">Most congested city<br/>globally · TomTom 2025</div>
+      </div>
+      <div class="hero-stat">
+        <div class="sv">70min</div>
+        <div class="sl">Average one-way<br/>commute in Lagos</div>
+      </div>
+      <div class="hero-stat">
+        <div class="sv">₦4T</div>
+        <div class="sl">Annual productivity<br/>lost to traffic</div>
+      </div>
+      <div class="hero-stat">
+        <div class="sv">17.8M</div>
+        <div class="sl">Lagos metro<br/>residents</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Problem ── -->
+  <section class="problem">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">The Problem</div>
+        <h2 class="section-title">Lagos commuting is a <em>safety crisis.</em></h2>
+        <p class="section-sub">Millions of Lagos residents rely on ride-hailing daily with no reliable safety net — unverified drivers, no emergency response, no accountability.</p>
+      </div>
+
+      <div class="problem-grid">
+        <div class="problem-card reveal reveal-delay-1">
+          <div class="pc-icon">🚦</div>
+          <div class="pc-stat"><span>#1</span></div>
+          <h3>World's most congested city</h3>
+          <p>Lagos ranked the most congested city globally in 2025, with commuters losing hundreds of hours per year to gridlock.</p>
+          <div class="pc-source">TomTom Traffic Index, 2025</div>
+        </div>
+        <div class="problem-card reveal reveal-delay-2">
+          <div class="pc-icon">📱</div>
+          <div class="pc-stat"><span>85%</span></div>
+          <h3>Smartphone penetration in Nigeria</h3>
+          <p>Nigeria's digital infrastructure is ready for a safety-first platform — but no ride-hailing service has built one that Nigerians can trust.</p>
+          <div class="pc-source">Vanguard, 2025</div>
+        </div>
+        <div class="problem-card reveal reveal-delay-3">
+          <div class="pc-icon">👷</div>
+          <div class="pc-stat"><span>93%</span></div>
+          <h3>Of workers in the gig economy</h3>
+          <p>Nigeria's gig workforce is one of the fastest-growing in Africa, yet drivers have no safety tools, no earnings protection, and no voice.</p>
+          <div class="pc-source">Technext24, 2025</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── How it works ── -->
+  <section class="how">
+    <div class="container">
+      <div class="how-grid">
+        <div>
+          <div class="reveal">
+            <div class="section-label">How It Works</div>
+            <h2 class="section-title">Safety built into<br/><em>every step.</em></h2>
+          </div>
+          <div class="steps">
+            <div class="step reveal reveal-delay-1">
+              <div class="step-num">1</div>
+              <div>
+                <h3>Book a verified ride</h3>
+                <p>Every VeloSafe driver is BVN and NIN verified, LASDRI certified, and background-checked before their first trip.</p>
+              </div>
+            </div>
+            <div class="step reveal reveal-delay-2">
+              <div class="step-num">2</div>
+              <div>
+                <h3>Share your trip live</h3>
+                <p>Your real-time location is shared with trusted contacts throughout your journey. One link. No app needed for them.</p>
+              </div>
+            </div>
+            <div class="step reveal reveal-delay-3">
+              <div class="step-num">3</div>
+              <div>
+                <h3>SOS — one tap away</h3>
+                <p>Hold the SOS button for 2 seconds. Your location is instantly sent to our safety desk, your emergency contacts, and if needed, Lagos LASEMA.</p>
+              </div>
+            </div>
+            <div class="step reveal reveal-delay-4">
+              <div class="step-num">4</div>
+              <div>
+                <h3>Arrive. Rate. Done.</h3>
+                <p>Transparent fares agreed upfront. Rate your driver after every trip. No surge surprises. No hidden charges.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phone mockup -->
+        <div class="phone-wrap reveal">
+          <div class="phone-glow"></div>
+          <div class="phone">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <div class="phone-header">
+                <span class="phone-brand">VeloSafe</span>
+                <span class="phone-status"></span>
+              </div>
+              <div class="phone-map">
+                <div class="map-pin"></div>
+                <span style="position:relative;z-index:1;">📍 Victoria Island → Lekki</span>
+              </div>
+              <div class="phone-card">
+                <div class="phone-card-icon">✅</div>
+                <div class="phone-card-text">
+                  <div class="pt">Driver Verified</div>
+                  <div class="ps">BVN · NIN · LASDRI certified</div>
+                </div>
+              </div>
+              <div class="phone-card">
+                <div class="phone-card-icon">📍</div>
+                <div class="phone-card-text">
+                  <div class="pt">Live Location Shared</div>
+                  <div class="ps">3 contacts notified</div>
+                </div>
+              </div>
+              <div class="phone-card">
+                <div class="phone-card-icon">💰</div>
+                <div class="phone-card-text">
+                  <div class="pt">Fare: ₦2,400</div>
+                  <div class="ps">Fixed · No surge</div>
+                </div>
+              </div>
+              <div class="sos-mini">🆘 HOLD FOR SOS</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Safety ── -->
+  <section id="safety">
+    <div class="container">
+      <div class="reveal" style="text-align:center;margin-bottom:0;">
+        <div class="section-label" style="color:#6EDBB8;">Safety Features</div>
+        <h2 class="section-title" style="color:var(--white);">Built for Lagos.<br/><em>Designed for trust.</em></h2>
+        <p class="section-sub" style="color:rgba(255,255,255,.6);margin:0 auto;">Six layers of safety infrastructure — not features bolted on top, but built into every trip from the ground up.</p>
+      </div>
+
+      <div class="safety-grid" style="margin-top:56px;">
+        <div class="safety-card reveal reveal-delay-1">
+          <div class="sc-icon">🛡️</div>
+          <h3>Driver Identity Verification</h3>
+          <p>Every driver verified via BVN and NIN. No anonymous drivers, ever. Full identity on record before their first trip goes live.</p>
+          <div class="safety-badge">✓ BVN + NIN verified</div>
+        </div>
+        <div class="safety-card reveal reveal-delay-2">
+          <div class="sc-icon">🆘</div>
+          <h3>One-Tap SOS</h3>
+          <p>Instant alert to our 24/7 safety desk, your emergency contacts, and Lagos LASEMA. Silent mode available for discreet situations.</p>
+          <div class="safety-badge">✓ Silent &amp; active modes</div>
+        </div>
+        <div class="safety-card reveal reveal-delay-3">
+          <div class="sc-icon">📍</div>
+          <h3>Live Trip Sharing</h3>
+          <p>Share a real-time tracking link with family before you leave. Updated every 10 seconds. No app needed for your contacts.</p>
+          <div class="safety-badge">✓ 10-second updates</div>
+        </div>
+        <div class="safety-card reveal reveal-delay-1">
+          <div class="sc-icon">⭐</div>
+          <h3>Accountability Ratings</h3>
+          <p>Every trip is rated. Drivers below threshold are suspended. Patterns of complaints trigger automatic review before the next booking.</p>
+          <div class="safety-badge">✓ Automatic review triggers</div>
+        </div>
+        <div class="safety-card reveal reveal-delay-2">
+          <div class="sc-icon">💰</div>
+          <h3>Transparent Pricing</h3>
+          <p>Fare agreed and locked before you book. No surge multipliers mid-trip. No last-minute additions. What you see is what you pay.</p>
+          <div class="safety-badge">✓ Fixed pre-agreed fares</div>
+        </div>
+        <div class="safety-card reveal reveal-delay-3">
+          <div class="sc-icon">🔒</div>
+          <h3>Data Privacy (NDPR)</h3>
+          <p>All data stored in line with Nigeria's Data Protection Regulation. Your location data is never sold or shared with third parties.</p>
+          <div class="safety-badge">✓ NDPR compliant</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Stats ── -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-row">
+        <div class="stat-block reveal">
+          <div class="sb-val"><span class="counter" data-target="2847">0</span></div>
+          <div class="sb-lbl">Riders on waitlist</div>
+        </div>
+        <div class="stat-block reveal reveal-delay-1">
+          <div class="sb-val"><span class="counter" data-target="412">0</span></div>
+          <div class="sb-lbl">Driver applications</div>
+        </div>
+        <div class="stat-block reveal reveal-delay-2">
+          <div class="sb-val"><span class="counter" data-target="18">0</span></div>
+          <div class="sb-lbl">Lagos LGAs covered</div>
+        </div>
+        <div class="stat-block reveal reveal-delay-3">
+          <div class="sb-val"><span class="counter" data-target="150">0</span>+</div>
+          <div class="sb-lbl">Founding driver slots</div>
+          <div class="sb-src">Limited cohort</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Verified ── -->
+  <section class="verified">
+    <div class="container">
+      <div class="reveal" style="text-align:center;">
+        <div class="section-label">Who We Serve</div>
+        <h2 class="section-title">For riders <em>&amp;</em> drivers.</h2>
+        <p class="section-sub" style="margin:0 auto;">Two sides of one platform. Both protected. Both empowered.</p>
+      </div>
+
+      <div class="verified-grid" style="margin-top:56px;">
+        <div class="verified-card reveal">
+          <div class="vc-header">
+            <div class="vc-avatar rider">🛵</div>
+            <div>
+              <h3>Riders</h3>
+              <p>Verified, protected, on time</p>
+            </div>
+          </div>
+          <div class="vc-checks">
+            <div class="vc-check">
+              <div class="vc-check-icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#0D9E75" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              BVN &amp; NIN verified drivers on every ride
+            </div>
+            <div class="vc-check">
+              <div class="vc-check-icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#0D9E75" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              Live trip sharing with emergency contacts
+            </div>
+            <div class="vc-check">
+              <div class="vc-check-icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#0D9E75" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              One-tap SOS with 24/7 safety desk
+            </div>
+            <div class="vc-check">
+              <div class="vc-check-icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#0D9E75" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              Fixed fares — agreed before you book
+            </div>
+            <div class="vc-check">
+              <div class="vc-check-icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#0D9E75" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              Safety marketplace — helmets &amp; gear
+            </div>
+          </div>
+          <a href="riders.html" class="vc-cta">Join rider waitlist →</a>
+        </div>
+
+        <div class="verified-card reveal reveal-delay-2">
+          <div class="vc-header">
+            <div class="vc-avatar driver">🚗</div>
+            <div>
+              <h3>Drivers</h3>
+              <p>Fair earnings, real protection</p>
+            </div>
+          </div>
+          <div class="vc-checks">
+            <div class="vc-check">
+              <div class="vc-check-icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#0D9E75" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              20% commission — lowest in Lagos
+            </div>
+            <div class="vc-check">
+              <div class="vc-check-icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#0D9E75" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              Weekly payouts, every Monday
+            </div>
+            <div class="vc-check">
+              <div class="vc-check-icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#0D9E75" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              In-trip SOS for driver protection
+            </div>
+            <div class="vc-check">
+              <div class="vc-check-icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#0D9E75" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              Safety rating bonuses
+            </div>
+            <div class="vc-check">
+              <div class="vc-check-icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#0D9E75" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              Vehicle maintenance network access
+            </div>
+          </div>
+          <a href="drivers.html" class="vc-cta gold">Apply to drive →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Founder ── -->
+  <section class="founder">
+    <div class="container">
+      <div class="reveal">
+        <div class="founder-card">
+          <div class="founder-avatar">J</div>
+          <blockquote>"Lagos deserves a ride-hailing platform that treats safety as infrastructure — not a feature. VeloSafe is that platform."</blockquote>
+          <div class="f-name">Jeremiah Ndidi Erue</div>
+          <div class="f-role">Founder · VeloSafe Technologies · Lagos, Nigeria</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <section class="cta-section">
+    <div class="container" style="text-align:center;position:relative;">
+      <div class="reveal">
+        <h2>Ready to ride <em>safer?</em></h2>
+        <p>Join thousands of Lagos commuters and drivers building the future of safe mobility.</p>
+        <div class="cta-btns">
+          <a href="riders.html" class="btn-primary-hero">Join Rider Waitlist →</a>
+          <a href="drivers.html" class="btn-secondary-hero">Apply to Drive</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <div class="footer-logo">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2L3 7v6c0 5 4 9 9 10 5-1 9-5 9-10V7l-9-5z" stroke="#0D9E75" stroke-width="2" fill="rgba(13,158,117,.2)"/>
+        <path d="M9 12l2 2 4-4" stroke="#0D9E75" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      VeloSafe
+    </div>
+
+    <div class="footer-links">
+      <a href="#safety">Safety</a>
+      <a href="riders.html">Riders</a>
+      <a href="drivers.html">Drivers</a>
+      <a href="mailto:velosafetechnologies@gmail.com">Contact</a>
+    </div>
+
+    <div class="footer-social">
+      <a href="https://www.instagram.com/velosafetechnologies?igsh=aG00ZW12cHdyd3Fj&utm_source=qr" target="_blank" rel="noopener" title="Instagram">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+      <a href="https://chat.whatsapp.com/CMh0SfdcGe3As34EkD0he3" target="_blank" rel="noopener" title="WhatsApp">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1s-.5-.2-.7.1c-.2.3-.8 1-1 1.2-.2.2-.4.2-.6.1-1.1-.5-2-1-2.9-2.5-.2-.4.2-.4.6-1.2.1-.2 0-.3 0-.4 0-.1-.6-1.5-.8-2-.2-.5-.5-.4-.7-.5h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2 0 1.3.9 2.5 1.1 2.7.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.3-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+      </a>
+      <a href="mailto:velosafetechnologies@gmail.com" title="Email">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </a>
+    </div>
+
+    <div style="width:100%;text-align:center;font-size:11px;color:rgba(255,255,255,.25);padding-top:12px;border-top:1px solid rgba(255,255,255,.06);">
+      Nigeria · NDPR Compliant · &copy; 2026 VeloSafe Technologies
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll effect
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // Contact dropdown
+    const toggle = document.getElementById('contact-toggle');
+    const dropdown = document.getElementById('contact-dropdown');
+    toggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      dropdown.classList.toggle('open');
+    });
+    document.addEventListener('click', () => dropdown.classList.remove('open'));
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
+
+    // Counter animation
+    function animateCounter(el) {
+      const target = parseInt(el.dataset.target);
+      const duration = 1800;
+      const step = target / (duration / 16);
+      let current = 0;
+      const timer = setInterval(() => {
+        current = Math.min(current + step, target);
+        el.textContent = Math.floor(current).toLocaleString();
+        if (current >= target) clearInterval(timer);
+      }, 16);
+    }
+
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          animateCounter(e.target);
+          counterObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+  </script>
+
+</body>
+</html>
