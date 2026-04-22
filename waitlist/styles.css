@@ -722,3 +722,180 @@ input::placeholder { color: var(--gray-400); }
 .field.error .field-error   { display: block; }
 .field.error input,
 .field.error select          { border-color: var(--danger); }
+
+/* =========================================================
+   Button animations & micro-interactions
+   ========================================================= */
+
+/* Ripple effect base */
+.submit-btn,
+.nav-cta,
+.community-btn,
+.share-btn,
+.role-option {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ripple keyframe */
+@keyframes ripple {
+  from { transform: scale(0); opacity: 0.3; }
+  to   { transform: scale(4); opacity: 0; }
+}
+
+.ripple-circle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.35);
+  width: 80px;
+  height: 80px;
+  margin-top: -40px;
+  margin-left: -40px;
+  animation: ripple 0.55s ease-out forwards;
+  pointer-events: none;
+}
+
+/* Submit button — enhanced */
+.submit-btn {
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s, letter-spacing 0.2s;
+  will-change: transform;
+}
+
+.submit-btn:not(:disabled):hover {
+  transform: translateY(-3px);
+  letter-spacing: 0.02em;
+  box-shadow: 0 10px 32px rgba(13,158,117,.45);
+}
+
+.submit-btn:not(:disabled):active {
+  transform: translateY(-1px) scale(0.99);
+}
+
+.submit-btn.loading {
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+.submit-btn.loading::after {
+  content: '';
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255,255,255,.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Nav CTA button */
+.nav-cta {
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+
+.nav-cta:hover {
+  box-shadow: 0 4px 16px rgba(13,158,117,.3);
+  transform: translateY(-1px);
+}
+
+.nav-cta:active { transform: scale(0.97); }
+
+/* Share buttons */
+.share-btn {
+  transition: border-color 0.2s, color 0.2s, transform 0.15s, box-shadow 0.15s;
+}
+
+.share-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(13,158,117,.15);
+}
+
+.share-btn:active { transform: scale(0.97); }
+
+/* WhatsApp / Instagram community buttons */
+.community-btn {
+  transition: transform 0.2s, filter 0.2s, box-shadow 0.2s;
+}
+
+.community-btn:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.08);
+  box-shadow: 0 8px 24px rgba(0,0,0,.18);
+}
+
+.community-btn:active { transform: scale(0.98); }
+
+/* Role toggle cards */
+.role-option {
+  transition: border-color 0.2s, background 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+.role-option:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(11,31,58,.07);
+}
+
+/* Form inputs — smooth focus lift */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select,
+textarea {
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+select:focus,
+textarea:focus {
+  transform: translateY(-1px);
+}
+
+/* Pills — bounce select */
+.pill {
+  transition: background 0.18s, color 0.18s, border-color 0.18s, transform 0.18s, box-shadow 0.18s;
+}
+
+.pill:hover { transform: translateY(-2px); box-shadow: 0 3px 10px rgba(11,31,58,.08); }
+
+.pill.selected {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(13,158,117,.3);
+}
+
+/* Contact dropdown items */
+.contact-item {
+  transition: background 0.15s, transform 0.15s;
+}
+
+.contact-item:hover { transform: translateX(3px); }
+
+/* Stat cards — subtle hover */
+.stat-card {
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(11,31,58,.1);
+}
+
+/* Page load fade-in */
+@keyframes pageIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.form-card {
+  animation: pageIn 0.5s ease both;
+}
+
+.hero, .eyebrow {
+  animation: pageIn 0.6s ease both;
+}

@@ -35,7 +35,7 @@
         VeloSafe
       </a>
       <div class="nav-links">
-        <a href="index.html#safety">Safety</a>
+        <a href="index.html">Home</a>
         <a href="riders.html">For riders</a>
         <a href="drivers.html">For drivers</a>
         <div class="nav-contact-wrap">
@@ -342,6 +342,19 @@
       event.target.textContent = 'Copied ✓';
       setTimeout(() => { event.target.textContent = 'Copy link'; }, 2000);
     }
+
+    // Ripple effect on buttons
+    document.querySelectorAll('.submit-btn, .nav-cta, .community-btn, .share-btn').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        const r = document.createElement('span');
+        r.className = 'ripple-circle';
+        const rect = this.getBoundingClientRect();
+        r.style.left = (e.clientX - rect.left) + 'px';
+        r.style.top  = (e.clientY - rect.top)  + 'px';
+        this.appendChild(r);
+        setTimeout(() => r.remove(), 600);
+      });
+    });
 
     // Contact dropdown
     const contactToggle = document.getElementById('contact-toggle');

@@ -364,6 +364,25 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
+    @keyframes ripple {
+      from { transform: scale(0); opacity: 0.3; }
+      to   { transform: scale(4); opacity: 0; }
+    }
+
+    .btn-primary-hero, .btn-secondary-hero, .vc-cta {
+      transition: transform 0.2s, box-shadow 0.2s, background 0.2s, filter 0.2s;
+    }
+
+    .btn-secondary-hero:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(255,255,255,.08);
+    }
+
+    .vc-cta:hover {
+      transform: translateY(-3px) !important;
+      box-shadow: 0 8px 24px rgba(13,158,117,.35);
+    }
+
     /* ── Section base ── */
     section { padding: 96px 24px; }
 
@@ -881,7 +900,7 @@
     </a>
 
     <div class="nav-links">
-      <a href="#safety">Safety</a>
+      <a href="#how">How it works</a>
       <a href="riders.html">For riders</a>
       <a href="drivers.html">For drivers</a>
 
@@ -995,7 +1014,7 @@
   </section>
 
   <!-- ── How it works ── -->
-  <section class="how">
+  <section class="how" id="how">
     <div class="container">
       <div class="how-grid">
         <div>
@@ -1271,7 +1290,7 @@
     </div>
 
     <div class="footer-links">
-      <a href="#safety">Safety</a>
+      <a href="#how">How it works</a>
       <a href="riders.html">Riders</a>
       <a href="drivers.html">Drivers</a>
       <a href="mailto:velosafetechnologies@gmail.com">Contact</a>
@@ -1295,6 +1314,21 @@
   </footer>
 
   <script>
+    // Ripple effect on buttons
+    document.querySelectorAll('.btn-primary-hero, .btn-secondary-hero, .nav-contact-btn, .vc-cta').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        const r = document.createElement('span');
+        r.style.cssText = `position:absolute;border-radius:50%;background:rgba(255,255,255,.3);width:80px;height:80px;margin-top:-40px;margin-left:-40px;animation:ripple .55s ease-out forwards;pointer-events:none;`;
+        const rect = this.getBoundingClientRect();
+        r.style.left = (e.clientX - rect.left) + 'px';
+        r.style.top  = (e.clientY - rect.top)  + 'px';
+        this.style.position = 'relative';
+        this.style.overflow = 'hidden';
+        this.appendChild(r);
+        setTimeout(() => r.remove(), 600);
+      });
+    });
+
     // Nav scroll effect
     const nav = document.getElementById('main-nav');
     window.addEventListener('scroll', () => {
