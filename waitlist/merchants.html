@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>List Your Business — VeloSafe Marketplace</title>
+  <meta name="description" content="Sell to 17.8 million Lagos commuters on every trip. Zero monthly fee. Delivery by VeloSafe drivers. Apply to become a founding VeloSafe merchant." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="VeloSafe Marketplace — Sell to Lagos commuters" />
+  <meta property="og:description" content="Reach verified riders on every trip. Zero monthly fee for founding merchants. Apply to list your business on VeloSafe." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://jeremiah-n-erue.github.io/VeloSafe/waitlist/merchants.html" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2L3 7v6c0 5 4 9 9 10 5-1 9-5 9-10V7l-9-5z' fill='%230D9E75'/%3E%3Cpath d='M9 12l2 2 4-4' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E" />
+
+  <style>
+    /* Merchant-specific accent — gold to complement teal brand */
+    .merchant-accent { color: var(--gold); }
+    .hero-merchant   { background: linear-gradient(135deg, #0B1F3A 0%, #14302A 60%, #C8892A 100%); }
+
+    .how-it-works-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 32px 0 8px;
+    }
+    .how-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 20px 16px;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(0,0,0,.05);
+      border-top: 3px solid var(--teal);
+    }
+    .how-card-num {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: var(--teal-light); color: var(--teal);
+      font-weight: 700; font-size: 15px;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 10px;
+    }
+    .how-card h4 { font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+    .how-card p  { font-size: 11px; color: var(--gray-400); line-height: 1.5; }
+
+    @media (max-width: 600px) {
+      .how-it-works-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="https://jeremiah-n-erue.github.io/VeloSafe/" class="logo">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2L3 7v6c0 5 4 9 9 10 5-1 9-5 9-10V7l-9-5z" stroke="#0D9E75" stroke-width="2" fill="#E1F5EE"/>
+          <path d="M9 12l2 2 4-4" stroke="#0D9E75" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        VeloSafe
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="riders.html">For riders</a>
+        <a href="drivers.html">For drivers</a>
+        <a href="merchants.html" style="color: var(--teal); font-weight: 600;">For merchants</a>
+        <div class="nav-contact-wrap">
+          <button class="nav-cta nav-contact-btn" id="contact-toggle">Contact ▾</button>
+          <div class="contact-dropdown" id="contact-dropdown">
+            <a href="mailto:velosafetechnologies@gmail.com" class="contact-item">
+              <div class="contact-icon" style="background:#EEF0F3;">✉️</div>
+              <div>
+                <div class="contact-label">Email us</div>
+                <div class="contact-sub">velosafetechnologies@gmail.com</div>
+              </div>
+            </a>
+            <a href="https://chat.whatsapp.com/CMh0SfdcGe3As34EkD0he3" target="_blank" rel="noopener" class="contact-item">
+              <div class="contact-icon" style="background:#E8F8EE;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#25D366"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1s-.5-.2-.7.1c-.2.3-.8 1-1 1.2-.2.2-.4.2-.6.1-1.1-.5-2-1-2.9-2.5-.2-.4.2-.4.6-1.2.1-.2 0-.3 0-.4 0-.1-.6-1.5-.8-2-.2-.5-.5-.4-.7-.5h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2 0 1.3.9 2.5 1.1 2.7.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.3-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+              </div>
+              <div>
+                <div class="contact-label">WhatsApp</div>
+                <div class="contact-sub">Join our community</div>
+              </div>
+            </a>
+            <a href="https://www.instagram.com/velosafetechnologies?igsh=aG00ZW12cHdyd3Fj&utm_source=qr" target="_blank" rel="noopener" class="contact-item">
+              <div class="contact-icon" style="background:#FFF0F3;">📸</div>
+              <div>
+                <div class="contact-label">Instagram</div>
+                <div class="contact-sub">@velosafetechnologies</div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero hero-merchant">
+    <span class="eyebrow">VeloSafe Marketplace · Lagos Pilot 2026</span>
+    <h1>Sell to Lagos commuters. <em>Right where they move.</em></h1>
+    <p class="hero-sub">
+      17.8 million people move through Lagos every day. VeloSafe puts your business in front of verified, active commuters on every single trip. No monthly fee. No setup cost. Delivery handled by our driver network.
+    </p>
+    <div class="hero-badges">
+      <span>
+        <svg class="check-icon" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#0D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Zero monthly listing fee
+      </span>
+      <span>
+        <svg class="check-icon" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#0D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Delivery via VeloSafe drivers
+      </span>
+      <span>
+        <svg class="check-icon" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#0D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Weekly payouts to your account
+      </span>
+    </div>
+  </section>
+
+  <!-- Form -->
+  <div class="form-wrap">
+    <div class="form-card">
+
+      <div id="form-view">
+
+        <!-- Role toggle — 3 options -->
+        <p class="role-label">I'm joining as a</p>
+        <div class="role-toggle" style="grid-template-columns: 1fr 1fr 1fr;">
+          <a href="riders.html" class="role-option">
+            <div class="role-option-title"><span class="role-dot"></span>Rider</div>
+            <p class="role-option-desc">I want safer rides</p>
+          </a>
+          <a href="drivers.html" class="role-option">
+            <div class="role-option-title"><span class="role-dot"></span>Driver</div>
+            <p class="role-option-desc">I want to earn</p>
+          </a>
+          <a href="merchants.html" class="role-option active">
+            <div class="role-option-title"><span class="role-dot"></span>Merchant</div>
+            <p class="role-option-desc">I want to sell</p>
+          </a>
+        </div>
+
+        <!-- FORMSPREE: go to formspree.io → New Form → copy your form ID below -->
+        <form id="merchant-form" action="https://formspree.io/f/YOUR_MERCHANT_FORM_ID" method="POST">
+
+          <input type="hidden" name="_subject" value="New VeloSafe merchant application" />
+          <input type="hidden" name="role" value="merchant" />
+
+          <!-- Section 1: Business -->
+          <p class="section-label">Section 1 · About your business</p>
+          <div class="field-group">
+
+            <div class="field">
+              <label for="m-biz-name">Business name</label>
+              <input type="text" id="m-biz-name" name="business_name" placeholder="e.g. Amaka's Kitchen" required />
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="m-category">Business category</label>
+                <select id="m-category" name="business_category" required>
+                  <option value="">Select category</option>
+                  <option>Food &amp; Beverages</option>
+                  <option>Fashion &amp; Clothing</option>
+                  <option>Beauty &amp; Personal Care</option>
+                  <option>Electronics &amp; Gadgets</option>
+                  <option>Groceries &amp; Supermarket</option>
+                  <option>Health &amp; Pharmacy</option>
+                  <option>Home &amp; Furniture</option>
+                  <option>Books &amp; Stationery</option>
+                  <option>Professional Services</option>
+                  <option>Arts &amp; Crafts</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="m-location">Business area in Lagos</label>
+                <select id="m-location" name="business_area" required>
+                  <option value="">Select area</option>
+                  <option>Lekki</option>
+                  <option>Victoria Island</option>
+                  <option>Ikoyi</option>
+                  <option>Ajah</option>
+                  <option>Lagos Island</option>
+                  <option>Ikeja / GRA</option>
+                  <option>Yaba</option>
+                  <option>Surulere</option>
+                  <option>Ketu / Ojota</option>
+                  <option>Alimosho / Egbeda</option>
+                  <option>Online only (no physical location)</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="m-products">What do you sell? <span style="font-weight:400;color:var(--gray-400);">(brief description)</span></label>
+              <textarea id="m-products" name="products_description" rows="3"
+                placeholder="e.g. Homemade jollof rice, small chops, and drinks. Also freshly baked pastries."
+                style="width:100%;padding:12px 14px;border:1.5px solid var(--gray-100);border-radius:10px;font-size:14px;font-family:inherit;resize:vertical;margin-top:8px;outline:none;background:var(--off-white);"
+                required></textarea>
+            </div>
+
+          </div>
+
+          <!-- Section 2: Contact -->
+          <p class="section-label">Section 2 · Your contact details</p>
+          <div class="field-group">
+
+            <div class="field">
+              <label for="m-name">Your name</label>
+              <input type="text" id="m-name" name="contact_name" placeholder="Ngozi Adeyemi" required />
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="m-phone">Phone (NG)</label>
+                <input type="tel" id="m-phone" name="phone" placeholder="+234 801 234 5678" required pattern="[\+0-9\s\-]{10,}" />
+              </div>
+              <div class="field">
+                <label for="m-email">Email address</label>
+                <input type="email" id="m-email" name="email" placeholder="you@example.com" required />
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="m-instagram">Instagram / WhatsApp business page <span style="font-weight:400;color:var(--gray-400);">(optional)</span></label>
+              <input type="text" id="m-instagram" name="social_page" placeholder="e.g. @amakas_kitchen or wa.me/2348012345678" />
+            </div>
+
+          </div>
+
+          <!-- Section 3: Business today -->
+          <p class="section-label">Section 3 · How you sell today</p>
+          <div class="field-group">
+
+            <div class="field">
+              <label>Where do you currently sell? <span style="font-weight:400;color:var(--gray-400);">(select all that apply)</span></label>
+              <div class="pill-group" id="channel-pills" style="margin-top:10px;">
+                <span class="pill" data-value="Physical shop / market">Physical shop / market</span>
+                <span class="pill" data-value="Instagram / Facebook">Instagram / Facebook</span>
+                <span class="pill" data-value="WhatsApp">WhatsApp</span>
+                <span class="pill" data-value="Jumia / Konga">Jumia / Konga</span>
+                <span class="pill" data-value="Chowdeck / Glovo">Chowdeck / Glovo</span>
+                <span class="pill" data-value="Word of mouth only">Word of mouth only</span>
+                <span class="pill" data-value="Not selling yet">Not selling yet</span>
+              </div>
+              <input type="hidden" name="current_channels" id="channel-input" />
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="m-revenue">Estimated monthly revenue</label>
+                <select id="m-revenue" name="monthly_revenue" required>
+                  <option value="">Select range</option>
+                  <option>Under ₦50,000</option>
+                  <option>₦50,000 – ₦200,000</option>
+                  <option>₦200,000 – ₦1,000,000</option>
+                  <option>₦1,000,000 – ₦5,000,000</option>
+                  <option>Above ₦5,000,000</option>
+                  <option>Prefer not to say</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="m-orders">Orders / sales per week</label>
+                <select id="m-orders" name="weekly_orders" required>
+                  <option value="">Select volume</option>
+                  <option>Under 10 orders</option>
+                  <option>10 – 50 orders</option>
+                  <option>50 – 200 orders</option>
+                  <option>200+ orders</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="m-registered">Business registration</label>
+                <select id="m-registered" name="registration_status" required>
+                  <option value="">Registration status</option>
+                  <option>Registered with CAC</option>
+                  <option>Sole proprietorship (informal)</option>
+                  <option>Not registered yet</option>
+                  <option>In the process of registering</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="m-delivery">Delivery capability today</label>
+                <select id="m-delivery" name="delivery_capability" required>
+                  <option value="">Current delivery setup</option>
+                  <option>I deliver myself</option>
+                  <option>I use dispatch riders</option>
+                  <option>Customers pick up from me</option>
+                  <option>I don't offer delivery yet</option>
+                </select>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Strategic question -->
+          <div class="option-group featured" style="margin-bottom: 20px;">
+            <label class="option-group-label">What is your biggest challenge selling online today?</label>
+            <div class="options-list">
+              <label><input type="radio" name="biggest_challenge" value="finding_customers" required /> Finding new customers beyond my existing circle</label>
+              <label><input type="radio" name="biggest_challenge" value="delivery_logistics" /> Delivery logistics — unreliable or too expensive</label>
+              <label><input type="radio" name="biggest_challenge" value="payment_collection" /> Collecting payments — chargebacks, trust issues</label>
+              <label><input type="radio" name="biggest_challenge" value="platform_fees" /> High platform fees eating into margins</label>
+              <label><input type="radio" name="biggest_challenge" value="visibility" /> Visibility — my products don't get seen</label>
+            </div>
+          </div>
+
+          <!-- How it works -->
+          <div style="background: var(--teal-light); border-radius: 14px; padding: 20px; margin-bottom: 20px;">
+            <p style="font-size: 12px; font-weight: 700; color: var(--navy); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 14px;">How VeloSafe Marketplace works</p>
+            <div class="how-it-works-grid">
+              <div class="how-card">
+                <div class="how-card-num">1</div>
+                <h4>List your products</h4>
+                <p>Upload photos, set your prices, and go live inside the VeloSafe rider app.</p>
+              </div>
+              <div class="how-card">
+                <div class="how-card-num">2</div>
+                <h4>Rider orders in-trip</h4>
+                <p>Riders browse and order while commuting. You get notified instantly.</p>
+              </div>
+              <div class="how-card">
+                <div class="how-card-num">3</div>
+                <h4>Driver delivers</h4>
+                <p>A VeloSafe driver picks up from you and delivers to the rider's door.</p>
+              </div>
+            </div>
+            <p style="font-size: 11px; color: var(--gray-400); margin-top: 10px; text-align: center;">VeloSafe charges a small commission per completed order only — no monthly fee, no listing fee.</p>
+          </div>
+
+          <!-- Referral -->
+          <div class="referral-note">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6L12 2z" fill="#C8892A"/>
+            </svg>
+            <span>Founding merchants get 0% commission for the first 90 days after launch</span>
+          </div>
+
+          <!-- Consent -->
+          <div class="consent">
+            <label>
+              <input type="checkbox" name="consent" required />
+              <span>I agree to VeloSafe's merchant terms and consent to being contacted about my application. Data processed in line with NDPR regulations.</span>
+            </label>
+          </div>
+
+          <button type="submit" class="submit-btn" id="m-submit">Apply to list my business</button>
+        </form>
+      </div>
+
+      <!-- Success state -->
+      <div class="success-state" id="success-view">
+        <div class="check-circle">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+            <path d="M20 6L9 17l-5-5" stroke="#0D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h2>Application received.</h2>
+        <p>Our marketplace team will review your application and get in touch within 5 business days. Founding merchants get 0% commission for the first 90 days — so apply early.</p>
+
+        <a href="mailto:velosafetechnologies@gmail.com?subject=Merchant%20Application%20Follow-up" class="community-btn" style="background: var(--navy);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          Email us for faster onboarding
+        </a>
+        <p class="community-hint">velosafetechnologies@gmail.com · We respond within 24 hrs</p>
+
+        <a href="https://www.instagram.com/velosafetechnologies?igsh=aG00ZW12cHdyd3Fj&utm_source=qr" target="_blank" rel="noopener" class="community-btn" style="background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); margin-top: 4px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink: 0;">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+          Follow us on Instagram
+        </a>
+        <p class="community-hint" style="margin-top: 6px;">@velosafetechnologies · Launch updates &amp; merchant previews</p>
+
+        <div class="share-divider">
+          <span>Know another business owner who should apply?</span>
+        </div>
+        <div class="share-btns">
+          <button class="share-btn" onclick="shareOn('whatsapp')">Share with a friend</button>
+          <button class="share-btn" onclick="copyLink()">Copy link</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-strip">
+    <div class="stat-card">
+      <p class="stat-value">2,847</p>
+      <p class="stat-label">Potential customers on waitlist</p>
+    </div>
+    <div class="stat-card">
+      <p class="stat-value">0%</p>
+      <p class="stat-label">Commission · first 90 days</p>
+    </div>
+    <div class="stat-card">
+      <p class="stat-value">17.8M</p>
+      <p class="stat-label">Lagos commuters reachable</p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div>
+      <strong style="color: var(--gray-700); font-weight: 600;">VeloSafe Technologies</strong><br />
+      Safer rides. Stronger cities.
+    </div>
+    <div style="margin-top: 14px;">
+      <a href="mailto:velosafetechnologies@gmail.com">velosafetechnologies@gmail.com</a>
+    </div>
+    <div style="margin-top: 14px; color: var(--gray-400); font-size: 11px;">
+      Nigeria · NDPR compliant · &copy; 2026 VeloSafe
+    </div>
+  </footer>
+
+  <script>
+    // Pill multi-select
+    const pills = document.querySelectorAll('#channel-pills .pill');
+    const channelInput = document.getElementById('channel-input');
+    pills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        pill.classList.toggle('selected');
+        const selected = Array.from(document.querySelectorAll('#channel-pills .pill.selected'))
+          .map(p => p.dataset.value);
+        channelInput.value = selected.join(', ');
+      });
+    });
+
+    // Form submission
+    const form        = document.getElementById('merchant-form');
+    const formView    = document.getElementById('form-view');
+    const successView = document.getElementById('success-view');
+    const submitBtn   = document.getElementById('m-submit');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Submitting…';
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          formView.style.display = 'none';
+          successView.classList.add('shown');
+        } else {
+          throw new Error();
+        }
+      } catch {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Apply to list my business';
+        alert('Something went wrong. Please try again or email velosafetechnologies@gmail.com');
+      }
+    });
+
+    function shareOn(platform) {
+      const url  = encodeURIComponent('https://jeremiah-n-erue.github.io/VeloSafe/waitlist/merchants.html');
+      const text = encodeURIComponent('List your business on VeloSafe and sell to Lagos commuters on every trip. Zero monthly fee for founding merchants:');
+      window.open(`https://wa.me/?text=${text}%20${url}`, '_blank');
+    }
+
+    function copyLink() {
+      navigator.clipboard.writeText('https://jeremiah-n-erue.github.io/VeloSafe/waitlist/merchants.html');
+      event.target.textContent = 'Copied ✓';
+      setTimeout(() => { event.target.textContent = 'Copy link'; }, 2000);
+    }
+
+    // Ripple
+    document.querySelectorAll('.submit-btn, .nav-cta, .community-btn, .share-btn').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        const r = document.createElement('span');
+        r.className = 'ripple-circle';
+        const rect = this.getBoundingClientRect();
+        r.style.left = (e.clientX - rect.left) + 'px';
+        r.style.top  = (e.clientY - rect.top)  + 'px';
+        this.appendChild(r);
+        setTimeout(() => r.remove(), 600);
+      });
+    });
+
+    // Contact dropdown
+    const contactToggle   = document.getElementById('contact-toggle');
+    const contactDropdown = document.getElementById('contact-dropdown');
+    if (contactToggle) {
+      contactToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        contactDropdown.classList.toggle('open');
+      });
+      document.addEventListener('click', () => contactDropdown.classList.remove('open'));
+    }
+  </script>
+
+</body>
+</html>
