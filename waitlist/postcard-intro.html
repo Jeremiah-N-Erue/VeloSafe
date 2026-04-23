@@ -2,311 +2,377 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-<title>VeloSafe — Introduction Card</title>
+<title>VeloSafe — Introduction Postcard</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
+  * { margin:0; padding:0; box-sizing:border-box; }
   body {
-    background: #111;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 24px;
-    min-height: 100vh;
-    gap: 16px;
-    font-family: 'DM Sans', sans-serif;
+    background:#0a0a0a;
+    display:flex; flex-direction:column;
+    align-items:center; padding:24px;
+    min-height:100vh; gap:16px;
+    font-family:'DM Sans',sans-serif;
   }
-
-  .instructions {
-    color: rgba(255,255,255,.7);
-    font-size: 13px;
-    text-align: center;
-    max-width: 560px;
-    line-height: 1.6;
-    background: rgba(255,255,255,.06);
-    border-radius: 10px;
-    padding: 12px 18px;
+  .tip {
+    color:rgba(255,255,255,.6); font-size:12px;
+    background:rgba(255,255,255,.06); border-radius:8px;
+    padding:10px 18px; max-width:560px; text-align:center; line-height:1.6;
   }
-  .instructions strong { color: #0D9E75; }
-
-  /* Clip window — shows the card at 50% scale */
+  .tip strong { color:#0D9E75; }
   .viewport {
-    width: 540px;
-    height: 540px;
-    overflow: hidden;
-    flex-shrink: 0;
-    border-radius: 4px;
-    box-shadow: 0 32px 80px rgba(0,0,0,.6);
+    width:540px; height:540px; overflow:hidden;
+    flex-shrink:0; border-radius:3px;
+    box-shadow:0 40px 100px rgba(0,0,0,.7);
   }
 
-  /* ── ACTUAL CARD ── 1080 × 1080 scaled to 0.5 */
+  /* ── CARD 1080×1080 scaled ── */
   .card {
-    width: 1080px;
-    height: 1080px;
-    transform: scale(0.5);
-    transform-origin: top left;
-    position: relative;
-    overflow: hidden;
-    background: linear-gradient(145deg, #060D1A 0%, #0B1F3A 40%, #0D2E1F 75%, #071A12 100%);
-    font-family: 'DM Sans', sans-serif;
+    width:1080px; height:1080px;
+    transform:scale(0.5); transform-origin:top left;
+    position:relative; overflow:hidden;
+    background:linear-gradient(150deg,#040C18 0%,#0B1F3A 45%,#0C2E1F 80%,#071A12 100%);
+    font-family:'DM Sans',sans-serif;
   }
 
-  /* ── Background layers ── */
-  .bg-dots {
-    position: absolute; inset: 0;
-    background-image: radial-gradient(circle, rgba(13,158,117,.18) 1.5px, transparent 1.5px);
-    background-size: 42px 42px;
+  /* backgrounds */
+  .dots {
+    position:absolute; inset:0;
+    background-image:radial-gradient(circle,rgba(13,158,117,.16) 1.5px,transparent 1.5px);
+    background-size:44px 44px;
   }
-  .bg-glow-1 {
-    position: absolute;
-    width: 700px; height: 700px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(13,158,117,.14) 0%, transparent 70%);
-    top: -150px; right: -150px;
+  .glow1 {
+    position:absolute; width:720px; height:720px; border-radius:50%;
+    background:radial-gradient(circle,rgba(13,158,117,.13) 0%,transparent 65%);
+    top:-200px; right:-180px;
   }
-  .bg-glow-2 {
-    position: absolute;
-    width: 500px; height: 500px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(200,137,42,.08) 0%, transparent 70%);
-    bottom: -100px; left: -50px;
-  }
-  .bg-line-h {
-    position: absolute; left: 0; right: 0;
-    height: 1px; background: linear-gradient(90deg, transparent, rgba(13,158,117,.3), transparent);
+  .glow2 {
+    position:absolute; width:400px; height:400px; border-radius:50%;
+    background:radial-gradient(circle,rgba(200,137,42,.07) 0%,transparent 70%);
+    bottom:-80px; left:-60px;
   }
 
-  /* ── Top bar ── */
-  .top-bar {
-    position: absolute; top: 0; left: 0; right: 0;
-    padding: 48px 60px 0;
-    display: flex; align-items: center; justify-content: space-between;
-    z-index: 10;
+  /* corners */
+  .c { position:absolute; width:56px; height:56px; z-index:5; }
+  .c-tl { top:28px; left:28px; border-top:2px solid rgba(13,158,117,.5); border-left:2px solid rgba(13,158,117,.5); border-radius:5px 0 0 0; }
+  .c-tr { top:28px; right:28px; border-top:2px solid rgba(13,158,117,.5); border-right:2px solid rgba(13,158,117,.5); border-radius:0 5px 0 0; }
+  .c-bl { bottom:28px; left:28px; border-bottom:2px solid rgba(13,158,117,.5); border-left:2px solid rgba(13,158,117,.5); border-radius:0 0 0 5px; }
+  .c-br { bottom:28px; right:28px; border-bottom:2px solid rgba(13,158,117,.5); border-right:2px solid rgba(13,158,117,.5); border-radius:0 0 5px 0; }
+
+  /* top bar */
+  .top {
+    position:absolute; top:0; left:0; right:0;
+    padding:50px 64px 0;
+    display:flex; align-items:center; justify-content:space-between;
+    z-index:10;
   }
-  .logo-row { display: flex; align-items: center; gap: 14px; }
-  .logo-text { font-family: 'DM Serif Display', serif; font-size: 30px; color: #fff; letter-spacing: -.3px; }
-  .top-label {
-    font-size: 20px; font-weight: 600; color: rgba(255,255,255,.4);
-    text-transform: uppercase; letter-spacing: .12em;
+  .logo-row { display:flex; align-items:center; gap:14px; }
+  .logo-txt  { font-family:'DM Serif Display',serif; font-size:32px; color:#fff; }
+  .intro-pill {
+    display:flex; align-items:center; gap:10px;
+    background:rgba(200,137,42,.14); border:1.5px solid rgba(200,137,42,.45);
+    border-radius:50px; padding:10px 28px;
+  }
+  .intro-dot { width:7px; height:7px; border-radius:50%; background:#C8892A; }
+  .intro-txt  { font-size:21px; font-weight:700; color:#C8892A; letter-spacing:.13em; text-transform:uppercase; }
+
+  /* headline block */
+  .headline-block {
+    position:absolute; top:170px; left:64px; right:64px;
+    z-index:10; text-align:center;
+  }
+  .h-tag {
+    display:inline-block; font-size:20px; font-weight:600;
+    color:rgba(255,255,255,.45); text-transform:uppercase;
+    letter-spacing:.14em; margin-bottom:18px;
+  }
+  .h1 {
+    font-family:'DM Serif Display',serif;
+    font-size:88px; line-height:1.03; color:#fff;
+  }
+  .h1 em { font-style:italic; color:#0D9E75; }
+  .h-sub {
+    margin-top:20px; font-size:28px; color:rgba(255,255,255,.5);
+    font-weight:400; letter-spacing:.02em;
+  }
+  .h-sub strong { color:#0D9E75; font-weight:600; }
+
+  /* ── CAR area ── */
+  .car-section {
+    position:absolute; top:430px; left:0; right:0;
+    z-index:10; display:flex; justify-content:center;
   }
 
-  /* ── Center content ── */
-  .center {
-    position: absolute; inset: 0;
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    padding: 0 80px;
-    text-align: center;
-    z-index: 10;
-  }
-
-  .introducing-pill {
-    display: inline-flex; align-items: center; gap: 10px;
-    background: rgba(200,137,42,.15);
-    border: 1px solid rgba(200,137,42,.4);
-    border-radius: 50px;
-    padding: 10px 28px;
-    margin-bottom: 44px;
-  }
-  .introducing-pill span { font-size: 22px; font-weight: 700; color: #C8892A; letter-spacing: .14em; text-transform: uppercase; }
-  .introducing-dot { width: 8px; height: 8px; border-radius: 50%; background: #C8892A; }
-
-  .main-headline {
-    font-family: 'DM Serif Display', serif;
-    font-size: 90px;
-    line-height: 1.05;
-    color: #fff;
-    margin-bottom: 30px;
-  }
-  .main-headline em { font-style: italic; color: #0D9E75; }
-
-  .sub-headline {
-    font-size: 30px;
-    color: rgba(255,255,255,.55);
-    font-weight: 400;
-    letter-spacing: .02em;
-    margin-bottom: 64px;
-  }
-  .sub-headline strong { color: #0D9E75; font-weight: 600; }
-
-  /* ── Shield ── */
-  .shield-wrap {
-    margin-bottom: 52px;
-    position: relative;
-  }
-  .shield-glow {
-    position: absolute;
-    width: 200px; height: 200px; border-radius: 50%;
-    background: radial-gradient(circle, rgba(13,158,117,.35) 0%, transparent 70%);
-    top: 50%; left: 50%; transform: translate(-50%,-50%);
-  }
-
-  /* ── Feature strip ── */
+  /* feature badges */
   .features {
-    display: flex; gap: 24px;
-    margin-bottom: 0;
+    position:absolute; bottom:172px; left:64px; right:64px;
+    z-index:10; display:flex; gap:20px; justify-content:center;
   }
-  .feat-card {
-    display: flex; align-items: center; gap: 14px;
-    background: rgba(255,255,255,.06);
-    border: 1px solid rgba(255,255,255,.1);
-    border-radius: 20px;
-    padding: 18px 26px;
-    backdrop-filter: blur(10px);
+  .feat {
+    display:flex; align-items:center; gap:14px;
+    background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.1);
+    border-radius:18px; padding:16px 24px; flex:1;
+    backdrop-filter:blur(8px);
   }
-  .feat-icon {
-    width: 44px; height: 44px; border-radius: 12px;
-    background: rgba(13,158,117,.2);
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
+  .feat-ic {
+    width:42px; height:42px; border-radius:12px;
+    background:rgba(13,158,117,.2);
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
   }
-  .feat-text { text-align: left; }
-  .feat-title { font-size: 20px; font-weight: 700; color: #fff; line-height: 1.2; }
-  .feat-sub   { font-size: 16px; color: rgba(255,255,255,.45); margin-top: 3px; }
+  .feat-t { font-size:18px; font-weight:700; color:#fff; line-height:1.2; }
+  .feat-s { font-size:14px; color:rgba(255,255,255,.42); margin-top:3px; }
 
-  /* ── Bottom bar ── */
-  .bottom-bar {
-    position: absolute; bottom: 0; left: 0; right: 0;
-    padding: 0 60px 50px;
-    display: flex; align-items: center; justify-content: space-between;
-    z-index: 10;
+  /* social strip */
+  .social-strip {
+    position:absolute; bottom:0; left:0; right:0; z-index:10;
+    background:rgba(0,0,0,.35); border-top:1px solid rgba(255,255,255,.08);
+    padding:0 64px;
+    display:flex; align-items:center; justify-content:space-between;
+    height:130px;
   }
-  .bottom-bar-line {
-    position: absolute; top: 0; left: 60px; right: 60px;
-    height: 1px; background: rgba(255,255,255,.1);
+  .soc-item { display:flex; align-items:center; gap:13px; cursor:pointer; }
+  .soc-ic {
+    width:46px; height:46px; border-radius:14px;
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
   }
-  .bottom-left { display: flex; flex-direction: column; gap: 6px; padding-top: 28px; }
-  .bottom-url  { font-size: 20px; color: #0D9E75; font-weight: 600; }
-  .bottom-handle { font-size: 18px; color: rgba(255,255,255,.35); }
-  .bottom-right { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; padding-top: 28px; }
-  .launch-chip {
-    background: rgba(13,158,117,.15); border: 1px solid rgba(13,158,117,.4);
-    border-radius: 50px; padding: 8px 22px;
-    font-size: 18px; font-weight: 700; color: #0D9E75; letter-spacing: .06em;
-  }
-  .powered-by { font-size: 16px; color: rgba(255,255,255,.3); }
-
-  /* ── Decorative corner lines ── */
-  .corner { position: absolute; width: 60px; height: 60px; z-index: 5; }
-  .corner-tl { top: 30px; left: 30px; border-top: 2px solid rgba(13,158,117,.4); border-left: 2px solid rgba(13,158,117,.4); border-radius: 6px 0 0 0; }
-  .corner-tr { top: 30px; right: 30px; border-top: 2px solid rgba(13,158,117,.4); border-right: 2px solid rgba(13,158,117,.4); border-radius: 0 6px 0 0; }
-  .corner-bl { bottom: 30px; left: 30px; border-bottom: 2px solid rgba(13,158,117,.4); border-left: 2px solid rgba(13,158,117,.4); border-radius: 0 0 0 6px; }
-  .corner-br { bottom: 30px; right: 30px; border-bottom: 2px solid rgba(13,158,117,.4); border-right: 2px solid rgba(13,158,117,.4); border-radius: 0 0 6px 0; }
+  .soc-label { font-size:18px; font-weight:600; color:rgba(255,255,255,.75); }
+  .soc-sub   { font-size:14px; color:rgba(255,255,255,.35); margin-top:2px; }
+  .soc-divider { width:1px; height:50px; background:rgba(255,255,255,.1); }
 </style>
 </head>
 <body>
 
-<div class="instructions">
-  <strong>How to save at full resolution:</strong> In Chrome, press <strong>F12</strong> → click the three-dot menu (⋮) → <strong>Run command</strong> → type <em>screenshot</em> → click <strong>"Capture node screenshot"</strong> after clicking the card element. Or zoom browser to 50% (Ctrl + −) and use Windows Snipping Tool.
+<div class="tip">
+  <strong>To save as image:</strong> Open in Chrome → F12 → ⋮ menu → Run command → type <em>screenshot</em> → "Capture full size screenshot" (saves PNG to Downloads). Or zoom to 50% with Ctrl+− and use Windows Snipping Tool.
 </div>
 
 <div class="viewport">
 <div class="card">
+  <div class="dots"></div>
+  <div class="glow1"></div>
+  <div class="glow2"></div>
+  <div class="c c-tl"></div><div class="c c-tr"></div>
+  <div class="c c-bl"></div><div class="c c-br"></div>
 
-  <!-- Backgrounds -->
-  <div class="bg-dots"></div>
-  <div class="bg-glow-1"></div>
-  <div class="bg-glow-2"></div>
-  <div class="bg-line-h" style="top:160px;"></div>
-  <div class="bg-line-h" style="bottom:160px;"></div>
-
-  <!-- Corner accents -->
-  <div class="corner corner-tl"></div>
-  <div class="corner corner-tr"></div>
-  <div class="corner corner-bl"></div>
-  <div class="corner corner-br"></div>
-
-  <!-- Top bar -->
-  <div class="top-bar">
+  <!-- TOP BAR -->
+  <div class="top">
     <div class="logo-row">
-      <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+      <svg width="46" height="46" viewBox="0 0 24 24" fill="none">
         <path d="M12 2L3 7v6c0 5 4 9 9 10 5-1 9-5 9-10V7l-9-5z" fill="rgba(13,158,117,.2)" stroke="#0D9E75" stroke-width="1.5"/>
-        <path d="M9 12l2 2 4-4" stroke="#0D9E75" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M9 12l2 2 4-4" stroke="#0D9E75" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
-      <span class="logo-text">VeloSafe</span>
+      <span class="logo-txt">VeloSafe</span>
     </div>
-    <span class="top-label">Lagos Pilot · 2026</span>
+    <div class="intro-pill">
+      <div class="intro-dot"></div>
+      <span class="intro-txt">Introducing</span>
+      <div class="intro-dot"></div>
+    </div>
   </div>
 
-  <!-- Center -->
-  <div class="center">
-
-    <!-- Shield -->
-    <div class="shield-wrap">
-      <div class="shield-glow"></div>
-      <svg width="110" height="130" viewBox="0 0 100 118" fill="none">
-        <path d="M50 4L8 20V54C8 80 26 101 50 112C74 101 92 80 92 54V20L50 4Z" fill="rgba(13,158,117,.12)" stroke="#0D9E75" stroke-width="1.8"/>
-        <path d="M50 16L18 29V54C18 75 32 92 50 102C68 92 82 75 82 54V29L50 16Z" fill="rgba(13,158,117,.08)" stroke="rgba(13,158,117,.4)" stroke-width="1" stroke-dasharray="4 3"/>
-        <path d="M34 54l10 10 22-22" stroke="#0D9E75" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </div>
-
-    <!-- Pill -->
-    <div class="introducing-pill">
-      <div class="introducing-dot"></div>
-      <span>Introducing</span>
-      <div class="introducing-dot"></div>
-    </div>
-
-    <!-- Headline -->
-    <h1 class="main-headline">Nigeria's Safest<br/>Way <em>to Move.</em></h1>
-
-    <!-- Sub -->
-    <p class="sub-headline">Starting in Lagos &nbsp;·&nbsp; <strong>Built for Africa</strong></p>
-
-    <!-- Features -->
-    <div class="features">
-      <div class="feat-card">
-        <div class="feat-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0D9E75" stroke-width="2" stroke-linecap="round">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/>
-          </svg>
-        </div>
-        <div class="feat-text">
-          <div class="feat-title">BVN &amp; NIN Verified</div>
-          <div class="feat-sub">Every driver screened</div>
-        </div>
-      </div>
-      <div class="feat-card">
-        <div class="feat-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0D9E75" stroke-width="2" stroke-linecap="round">
-            <circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 010 20M2 12h20"/>
-          </svg>
-        </div>
-        <div class="feat-text">
-          <div class="feat-title">Live GPS Tracking</div>
-          <div class="feat-sub">Real-time every trip</div>
-        </div>
-      </div>
-      <div class="feat-card">
-        <div class="feat-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0D9E75" stroke-width="2" stroke-linecap="round">
-            <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
-          </svg>
-        </div>
-        <div class="feat-text">
-          <div class="feat-title">Emergency SOS</div>
-          <div class="feat-sub">One tap, instant alert</div>
-        </div>
-      </div>
-    </div>
-
+  <!-- HEADLINE -->
+  <div class="headline-block">
+    <span class="h-tag">Nigeria's ride-hailing, reimagined</span>
+    <h1 class="h1">The Safest Way<br/><em>to Move.</em></h1>
+    <p class="h-sub">Starting in Lagos &nbsp;·&nbsp; <strong>Built for Africa</strong></p>
   </div>
 
-  <!-- Bottom bar -->
-  <div class="bottom-bar">
-    <div class="bottom-bar-line"></div>
-    <div class="bottom-left">
-      <span class="bottom-url">velosafetechnologies.github.io/VeloSafe</span>
-      <span class="bottom-handle">@velosafetechnologies</span>
+  <!-- CAR ILLUSTRATION -->
+  <div class="car-section">
+    <svg viewBox="0 0 580 228" width="980" height="385" xmlns="http://www.w3.org/2000/svg">
+      <!-- Ground shadow -->
+      <ellipse cx="292" cy="222" rx="268" ry="10" fill="rgba(0,0,0,0.35)"/>
+
+      <!-- Speed lines (motion blur effect) -->
+      <line x1="10" y1="168" x2="68" y2="168" stroke="rgba(13,158,117,.25)" stroke-width="3" stroke-linecap="round"/>
+      <line x1="4" y1="180" x2="52" y2="180" stroke="rgba(13,158,117,.18)" stroke-width="2" stroke-linecap="round"/>
+      <line x1="16" y1="192" x2="56" y2="192" stroke="rgba(13,158,117,.12)" stroke-width="1.5" stroke-linecap="round"/>
+
+      <!-- REAR WHEEL -->
+      <circle cx="138" cy="192" r="40" fill="#0A1020"/>
+      <circle cx="138" cy="192" r="30" fill="#131C30"/>
+      <circle cx="138" cy="192" r="18" fill="#0D9E75"/>
+      <circle cx="138" cy="192" r="8"  fill="#E1F5EE"/>
+      <line x1="138" y1="174" x2="138" y2="210" stroke="#E1F5EE" stroke-width="3" stroke-linecap="round"/>
+      <line x1="120" y1="192" x2="156" y2="192" stroke="#E1F5EE" stroke-width="3" stroke-linecap="round"/>
+      <line x1="125" y1="179" x2="151" y2="205" stroke="#E1F5EE" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="125" y1="205" x2="151" y2="179" stroke="#E1F5EE" stroke-width="2.5" stroke-linecap="round"/>
+
+      <!-- FRONT WHEEL -->
+      <circle cx="448" cy="192" r="40" fill="#0A1020"/>
+      <circle cx="448" cy="192" r="30" fill="#131C30"/>
+      <circle cx="448" cy="192" r="18" fill="#0D9E75"/>
+      <circle cx="448" cy="192" r="8"  fill="#E1F5EE"/>
+      <line x1="448" y1="174" x2="448" y2="210" stroke="#E1F5EE" stroke-width="3" stroke-linecap="round"/>
+      <line x1="430" y1="192" x2="466" y2="192" stroke="#E1F5EE" stroke-width="3" stroke-linecap="round"/>
+      <line x1="435" y1="179" x2="461" y2="205" stroke="#E1F5EE" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="435" y1="205" x2="461" y2="179" stroke="#E1F5EE" stroke-width="2.5" stroke-linecap="round"/>
+
+      <!-- CAR BODY LOWER -->
+      <path d="M68 140 L68 195 Q68 208 82 208 L520 208 Q534 208 534 195 L534 140 Z" fill="#0B1F3A"/>
+
+      <!-- CAR ROOF + PILLARS -->
+      <path d="M148 140 Q162 100 198 80 L278 66 Q338 60 378 64 L430 72 Q466 84 494 110 L510 130 L510 140 Z" fill="#0B1F3A"/>
+
+      <!-- GOLD BODY STRIPE -->
+      <line x1="72" y1="158" x2="532" y2="158" stroke="#C8892A" stroke-width="2.5" opacity="0.5"/>
+
+      <!-- WINDOW GLASS — rear quarter -->
+      <path d="M164 108 Q175 92 208 78 L235 74 L232 108 Z" fill="#7EC8D8" opacity="0.55"/>
+
+      <!-- WINDOW GLASS — rear door -->
+      <rect x="238" y="70" width="80" height="66" rx="5" fill="#7EC8D8" opacity="0.6"/>
+
+      <!-- WINDOW GLASS — front door (driver) -->
+      <rect x="326" y="65" width="92" height="71" rx="5" fill="#7EC8D8" opacity="0.6"/>
+
+      <!-- WINDOW GLASS — windshield -->
+      <path d="M426 67 Q458 61 492 80 L510 105 L422 106 Z" fill="#7EC8D8" opacity="0.55"/>
+
+      <!-- DRIVER visible in front window -->
+      <!-- Shirt/torso (teal VeloSafe shirt) -->
+      <path d="M334 126 Q338 118 346 115 L354 118 L360 113 L366 118 L374 115 Q382 118 386 126 Z" fill="#0D9E75"/>
+      <!-- Neck -->
+      <rect x="353" y="104" width="15" height="15" rx="6" fill="#C8956A"/>
+      <!-- Head -->
+      <circle cx="360" cy="88" r="22" fill="#C8956A"/>
+      <!-- Hair -->
+      <path d="M340 81 Q349 65 360 63 Q371 65 380 81 Q377 70 360 68 Q343 70 340 81 Z" fill="#160A02"/>
+      <!-- Cap brim -->
+      <path d="M338 80 Q348 73 360 72 Q372 73 382 80 L384 78 Q372 68 360 67 Q348 68 336 78 Z" fill="#0B1F3A"/>
+      <!-- Small smile -->
+      <path d="M354 95 Q360 99 366 95" stroke="#8B5E3C" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <!-- VS text on shirt -->
+      <text x="360" y="132" font-family="Arial,sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="bold" opacity="0.9">VS</text>
+
+      <!-- Door divider -->
+      <line x1="319" y1="108" x2="322" y2="205" stroke="#142840" stroke-width="5"/>
+
+      <!-- VELOSAFE BRANDING on rear door -->
+      <!-- Shield icon -->
+      <path d="M248 172 L238 176 V184 C238 191 243 196 248 198 C253 196 258 191 258 184 V176 Z" fill="rgba(13,158,117,.18)" stroke="#0D9E75" stroke-width="1.8"/>
+      <path d="M244 184 L246.5 186.5 L252 181" stroke="#0D9E75" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <text x="266" y="188" font-family="'DM Sans',Arial,sans-serif" font-size="15" fill="#0D9E75" font-weight="700" letter-spacing="0.5">VeloSafe</text>
+
+      <!-- Door handles -->
+      <rect x="390" y="178" width="22" height="5" rx="2.5" fill="#163355"/>
+      <rect x="253" y="178" width="22" height="5" rx="2.5" fill="#163355"/>
+
+      <!-- SIDE MIRROR -->
+      <path d="M504 118 L522 112 L526 124 L504 128 Z" fill="#0C1830" stroke="#142840" stroke-width="1"/>
+
+      <!-- HEADLIGHT -->
+      <path d="M514 142 L540 145 L540 162 L514 164 Q507 160 507 153 Q507 143 514 142 Z" fill="#FEFADF" opacity="0.9"/>
+      <!-- Light beam -->
+      <line x1="540" y1="150" x2="576" y2="144" stroke="#FFF8B0" stroke-width="2.5" opacity="0.45" stroke-linecap="round"/>
+      <line x1="540" y1="155" x2="578" y2="155" stroke="#FFF8B0" stroke-width="2" opacity="0.3" stroke-linecap="round"/>
+      <line x1="540" y1="160" x2="570" y2="165" stroke="#FFF8B0" stroke-width="1.5" opacity="0.2" stroke-linecap="round"/>
+
+      <!-- TAILLIGHT -->
+      <rect x="70" y="142" width="12" height="38" rx="4" fill="#FF1744" opacity="0.85"/>
+
+      <!-- FRONT BUMPER + GRILLE -->
+      <rect x="516" y="196" width="30" height="16" rx="5" fill="#0A1828"/>
+      <line x1="523" y1="199" x2="523" y2="209" stroke="#0D9E75" stroke-width="2" stroke-linecap="round"/>
+      <line x1="531" y1="199" x2="531" y2="209" stroke="#0D9E75" stroke-width="2" stroke-linecap="round"/>
+      <line x1="539" y1="199" x2="539" y2="209" stroke="#0D9E75" stroke-width="2" stroke-linecap="round"/>
+
+      <!-- REAR BUMPER -->
+      <rect x="56" y="196" width="18" height="16" rx="5" fill="#0A1828"/>
+    </svg>
+  </div>
+
+  <!-- FEATURE BADGES -->
+  <div class="features">
+    <div class="feat">
+      <div class="feat-ic">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0D9E75" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/>
+        </svg>
+      </div>
+      <div>
+        <div class="feat-t">BVN &amp; NIN Verified</div>
+        <div class="feat-s">Every driver screened</div>
+      </div>
     </div>
-    <div class="bottom-right">
-      <span class="launch-chip">LAUNCHING 2026</span>
-      <span class="powered-by">Safer rides · Stronger cities</span>
+    <div class="feat">
+      <div class="feat-ic">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0D9E75" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+        </svg>
+      </div>
+      <div>
+        <div class="feat-t">Live GPS Tracking</div>
+        <div class="feat-s">Every trip, real time</div>
+      </div>
+    </div>
+    <div class="feat">
+      <div class="feat-ic">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0D9E75" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.08 1.18 2 2 0 012.05 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/>
+        </svg>
+      </div>
+      <div>
+        <div class="feat-t">24/7 SOS Support</div>
+        <div class="feat-s">One tap, instant alert</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOCIAL STRIP -->
+  <div class="social-strip">
+    <!-- WhatsApp -->
+    <div class="soc-item">
+      <div class="soc-ic" style="background:rgba(37,211,102,.15);">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="#25D366">
+          <path d="M17.5 14.4c-.3-.1-1.8-.9-2-1s-.5-.2-.7.1c-.2.3-.8 1-1 1.2-.2.2-.4.2-.6.1-1.1-.5-2-1-2.9-2.5-.2-.4.2-.4.6-1.2.1-.2 0-.3 0-.4 0-.1-.6-1.5-.8-2-.2-.5-.5-.4-.7-.5h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2 0 1.3.9 2.5 1.1 2.7.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.3-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/>
+        </svg>
+      </div>
+      <div>
+        <div class="soc-label">WhatsApp</div>
+        <div class="soc-sub">Join community</div>
+      </div>
+    </div>
+    <div class="soc-divider"></div>
+    <!-- Instagram -->
+    <div class="soc-item">
+      <div class="soc-ic" style="background:rgba(193,53,132,.15);">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="url(#ig)" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="ig" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f09433"/><stop offset="25%" stop-color="#e6683c"/><stop offset="50%" stop-color="#dc2743"/><stop offset="75%" stop-color="#cc2366"/><stop offset="100%" stop-color="#bc1888"/></linearGradient></defs>
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+        </svg>
+      </div>
+      <div>
+        <div class="soc-label">Instagram</div>
+        <div class="soc-sub">@velosafetechnologies</div>
+      </div>
+    </div>
+    <div class="soc-divider"></div>
+    <!-- Email -->
+    <div class="soc-item">
+      <div class="soc-ic" style="background:rgba(13,158,117,.15);">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0D9E75" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+        </svg>
+      </div>
+      <div>
+        <div class="soc-label">Email us</div>
+        <div class="soc-sub">velosafetechnologies@gmail.com</div>
+      </div>
+    </div>
+    <div class="soc-divider"></div>
+    <!-- Waitlist -->
+    <div class="soc-item">
+      <div class="soc-ic" style="background:rgba(200,137,42,.15);">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C8892A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+        </svg>
+      </div>
+      <div>
+        <div class="soc-label" style="color:#C8892A;">Join Waitlist</div>
+        <div class="soc-sub">Lagos 2026 · Free</div>
+      </div>
     </div>
   </div>
 

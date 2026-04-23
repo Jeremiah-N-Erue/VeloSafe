@@ -2,256 +2,321 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-<title>VeloSafe — Join the Waitlist</title>
+<title>VeloSafe — Waitlist Postcard</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
+  * { margin:0; padding:0; box-sizing:border-box; }
   body {
-    background: #111;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 24px;
-    min-height: 100vh;
-    gap: 16px;
-    font-family: 'DM Sans', sans-serif;
+    background:#0a0a0a;
+    display:flex; flex-direction:column;
+    align-items:center; padding:24px;
+    min-height:100vh; gap:16px;
+    font-family:'DM Sans',sans-serif;
   }
-
-  .instructions {
-    color: rgba(255,255,255,.7);
-    font-size: 13px;
-    text-align: center;
-    max-width: 560px;
-    line-height: 1.6;
-    background: rgba(255,255,255,.06);
-    border-radius: 10px;
-    padding: 12px 18px;
+  .tip {
+    color:rgba(255,255,255,.6); font-size:12px;
+    background:rgba(255,255,255,.06); border-radius:8px;
+    padding:10px 18px; max-width:560px; text-align:center; line-height:1.6;
   }
-  .instructions strong { color: #0D9E75; }
-
+  .tip strong { color:#0D9E75; }
   .viewport {
-    width: 540px;
-    height: 540px;
-    overflow: hidden;
-    flex-shrink: 0;
-    border-radius: 4px;
-    box-shadow: 0 32px 80px rgba(0,0,0,.6);
+    width:540px; height:540px; overflow:hidden;
+    flex-shrink:0; border-radius:3px;
+    box-shadow:0 40px 100px rgba(0,0,0,.7);
   }
 
-  /* ── CARD ── 1080 × 1080, scaled to 0.5 */
+  /* ── CARD 1080×1080 scaled ── */
   .card {
-    width: 1080px;
-    height: 1080px;
-    transform: scale(0.5);
-    transform-origin: top left;
-    position: relative;
-    overflow: hidden;
-    font-family: 'DM Sans', sans-serif;
-    background: #0B1F3A;
+    width:1080px; height:1080px;
+    transform:scale(0.5); transform-origin:top left;
+    position:relative; overflow:hidden;
+    background:linear-gradient(150deg,#040C18 0%,#0B1F3A 50%,#0C2E1F 85%,#071A12 100%);
+    font-family:'DM Sans',sans-serif;
   }
 
-  /* ── Split background ── */
-  .bg-top {
-    position: absolute; top: 0; left: 0; right: 0;
-    height: 560px;
-    background: linear-gradient(135deg, #0D9E75 0%, #0B7755 40%, #084D38 100%);
+  /* backgrounds */
+  .dots {
+    position:absolute; inset:0;
+    background-image:radial-gradient(circle,rgba(13,158,117,.14) 1.5px,transparent 1.5px);
+    background-size:44px 44px;
   }
-  .bg-bottom {
-    position: absolute; bottom: 0; left: 0; right: 0;
-    height: 560px;
-    background: linear-gradient(135deg, #0B1F3A 0%, #060D1A 100%);
+  .glow-teal {
+    position:absolute; width:800px; height:800px; border-radius:50%;
+    background:radial-gradient(circle,rgba(13,158,117,.12) 0%,transparent 65%);
+    top:-300px; right:-200px;
   }
-  .bg-wave {
-    position: absolute; top: 480px; left: 0; right: 0; height: 120px; z-index: 2;
-    background: #0B1F3A;
-    clip-path: ellipse(60% 100% at 50% 100%);
+  .glow-gold {
+    position:absolute; width:500px; height:500px; border-radius:50%;
+    background:radial-gradient(circle,rgba(200,137,42,.08) 0%,transparent 65%);
+    bottom:-150px; left:-100px;
   }
-
-  /* ── Background patterns ── */
-  .bg-dots-light {
-    position: absolute; top: 0; left: 0; right: 0; height: 560px; z-index: 1;
-    background-image: radial-gradient(circle, rgba(255,255,255,.12) 1.5px, transparent 1.5px);
-    background-size: 38px 38px;
-  }
-  .bg-dots-dark {
-    position: absolute; bottom: 0; left: 0; right: 0; height: 520px; z-index: 1;
-    background-image: radial-gradient(circle, rgba(13,158,117,.1) 1.5px, transparent 1.5px);
-    background-size: 38px 38px;
-  }
-  .bg-circle-1 {
-    position: absolute; width: 500px; height: 500px; border-radius: 50%;
-    border: 1px solid rgba(255,255,255,.08);
-    top: -150px; right: -100px; z-index: 1;
-  }
-  .bg-circle-2 {
-    position: absolute; width: 320px; height: 320px; border-radius: 50%;
-    border: 1px solid rgba(255,255,255,.06);
-    top: -60px; right: -20px; z-index: 1;
+  .glow-car {
+    position:absolute; width:900px; height:300px; border-radius:50%;
+    background:radial-gradient(ellipse,rgba(13,158,117,.18) 0%,transparent 65%);
+    bottom:220px; left:50%; transform:translateX(-50%);
   }
 
-  /* ── Corner accents ── */
-  .corner { position: absolute; width: 60px; height: 60px; z-index: 20; }
-  .corner-tl { top: 30px; left: 30px; border-top: 2px solid rgba(255,255,255,.3); border-left: 2px solid rgba(255,255,255,.3); border-radius: 6px 0 0 0; }
-  .corner-tr { top: 30px; right: 30px; border-top: 2px solid rgba(255,255,255,.3); border-right: 2px solid rgba(255,255,255,.3); border-radius: 0 6px 0 0; }
-  .corner-bl { bottom: 30px; left: 30px; border-bottom: 2px solid rgba(13,158,117,.4); border-left: 2px solid rgba(13,158,117,.4); border-radius: 0 0 0 6px; }
-  .corner-br { bottom: 30px; right: 30px; border-bottom: 2px solid rgba(13,158,117,.4); border-right: 2px solid rgba(13,158,117,.4); border-radius: 0 0 6px 0; }
+  /* corner brackets */
+  .corner { position:absolute; width:56px; height:56px; z-index:20; }
+  .tl { top:28px; left:28px; border-top:2px solid rgba(255,255,255,.25); border-left:2px solid rgba(255,255,255,.25); border-radius:6px 0 0 0; }
+  .tr { top:28px; right:28px; border-top:2px solid rgba(255,255,255,.25); border-right:2px solid rgba(255,255,255,.25); border-radius:0 6px 0 0; }
+  .bl { bottom:28px; left:28px; border-bottom:2px solid rgba(13,158,117,.4); border-left:2px solid rgba(13,158,117,.4); border-radius:0 0 0 6px; }
+  .br { bottom:28px; right:28px; border-bottom:2px solid rgba(13,158,117,.4); border-right:2px solid rgba(13,158,117,.4); border-radius:0 0 6px 0; }
 
-  /* ── Top section ── */
-  .top-section {
-    position: absolute; top: 0; left: 0; right: 0;
-    padding: 50px 64px 0;
-    z-index: 10;
+  /* ── TOP BAR ── */
+  .top-bar {
+    position:absolute; top:0; left:0; right:0;
+    padding:44px 60px 0;
+    display:flex; align-items:center; justify-content:space-between;
+    z-index:10;
   }
-  .top-row {
-    display: flex; align-items: center; justify-content: space-between;
-    margin-bottom: 52px;
-  }
-  .logo-row { display: flex; align-items: center; gap: 14px; }
-  .logo-text { font-family: 'DM Serif Display', serif; font-size: 30px; color: #fff; }
-  .founding-badge {
-    background: rgba(200,137,42,.2);
-    border: 1.5px solid rgba(200,137,42,.6);
-    border-radius: 50px;
-    padding: 10px 26px;
-    font-size: 20px; font-weight: 700;
-    color: #C8892A; letter-spacing: .1em; text-transform: uppercase;
+  .logo-row { display:flex; align-items:center; gap:14px; }
+  .logo-name { font-family:'DM Serif Display',serif; font-size:32px; color:#fff; letter-spacing:.01em; }
+  .waitlist-pill {
+    background:rgba(200,137,42,.18);
+    border:1.5px solid rgba(200,137,42,.65);
+    border-radius:50px; padding:10px 28px;
+    font-size:19px; font-weight:700;
+    color:#C8892A; letter-spacing:.1em; text-transform:uppercase;
   }
 
-  .big-label {
-    font-size: 26px; font-weight: 600;
-    color: rgba(255,255,255,.7);
-    text-transform: uppercase; letter-spacing: .12em;
-    margin-bottom: 12px;
+  /* ── HERO TEXT ── */
+  .hero {
+    position:absolute; top:138px; left:60px; right:60px;
+    z-index:10;
   }
-  .big-number {
-    font-family: 'DM Serif Display', serif;
-    font-size: 148px; line-height: 1;
-    color: #fff;
-    letter-spacing: -4px;
+  .eyebrow {
+    font-size:22px; font-weight:600;
+    color:rgba(255,255,255,.55);
+    text-transform:uppercase; letter-spacing:.14em;
+    margin-bottom:14px;
   }
-  .big-number-sub {
-    font-size: 32px; font-weight: 500;
-    color: rgba(255,255,255,.75);
-    margin-top: 8px; margin-bottom: 48px;
+  .stat-number {
+    font-family:'DM Serif Display',serif;
+    font-size:140px; line-height:1;
+    color:#fff; letter-spacing:-4px;
+  }
+  .stat-number span { font-size:76px; opacity:.45; }
+  .stat-sub {
+    font-size:30px; font-weight:500;
+    color:rgba(255,255,255,.65);
+    margin-top:6px; margin-bottom:40px;
+  }
+  .headline {
+    font-family:'DM Serif Display',serif;
+    font-size:62px; line-height:1.1; color:#fff;
+  }
+  .headline em { font-style:italic; color:#0D9E75; }
+
+  /* ── CAR ILLUSTRATION ── */
+  .car-wrap {
+    position:absolute; bottom:196px; left:50%; transform:translateX(-50%);
+    z-index:8; width:1020px;
   }
 
-  .headline-2 {
-    font-family: 'DM Serif Display', serif;
-    font-size: 68px; line-height: 1.1;
-    color: #fff;
-    margin-bottom: 10px;
-  }
-  .headline-2 em { font-style: italic; color: rgba(255,255,255,.7); }
-
-  /* ── Bottom section ── */
-  .bottom-section {
-    position: absolute; bottom: 0; left: 0; right: 0;
-    padding: 0 64px 52px;
-    z-index: 10;
+  /* ── BOTTOM SECTION ── */
+  .bottom {
+    position:absolute; bottom:0; left:0; right:0;
+    padding:0 60px 44px;
+    z-index:10;
   }
 
-  /* CTA URL box */
+  /* CTA box */
   .cta-box {
-    background: rgba(13,158,117,.12);
-    border: 1.5px solid rgba(13,158,117,.5);
-    border-radius: 20px;
-    padding: 28px 36px;
-    display: flex; align-items: center; justify-content: space-between;
-    margin-bottom: 32px;
+    background:rgba(13,158,117,.1);
+    border:1.5px solid rgba(13,158,117,.45);
+    border-radius:18px;
+    padding:26px 34px;
+    display:flex; align-items:center; justify-content:space-between;
+    margin-bottom:24px;
   }
-  .cta-left { }
-  .cta-label { font-size: 20px; font-weight: 600; color: rgba(255,255,255,.55); margin-bottom: 6px; text-transform: uppercase; letter-spacing: .08em; }
-  .cta-url   { font-size: 26px; font-weight: 700; color: #0D9E75; }
+  .cta-label { font-size:19px; font-weight:600; color:rgba(255,255,255,.5); text-transform:uppercase; letter-spacing:.08em; margin-bottom:6px; }
+  .cta-url   { font-size:28px; font-weight:700; color:#0D9E75; }
   .cta-arrow {
-    width: 60px; height: 60px; border-radius: 50%;
-    background: #0D9E75;
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
+    width:58px; height:58px; border-radius:50%;
+    background:#0D9E75;
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
   }
 
-  /* Stats strip */
-  .stats-row {
-    display: flex; gap: 0;
-    background: rgba(255,255,255,.05);
-    border: 1px solid rgba(255,255,255,.08);
-    border-radius: 16px;
-    overflow: hidden;
-    margin-bottom: 36px;
+  /* Social strip */
+  .social-strip {
+    display:flex; gap:14px; align-items:stretch;
   }
-  .stat-item {
-    flex: 1; padding: 20px 24px; text-align: center;
-    border-right: 1px solid rgba(255,255,255,.08);
+  .soc {
+    flex:1; border-radius:14px; padding:16px 18px;
+    display:flex; align-items:center; gap:12px;
+    text-decoration:none;
   }
-  .stat-item:last-child { border-right: none; }
-  .stat-val   { font-size: 32px; font-weight: 700; color: #fff; line-height: 1; }
-  .stat-label { font-size: 17px; color: rgba(255,255,255,.45); margin-top: 5px; }
-
-  /* Bottom row */
-  .bottom-row {
-    display: flex; align-items: center; justify-content: space-between;
-  }
-  .handle-row { display: flex; align-items: center; gap: 10px; }
-  .handle-text { font-size: 20px; color: rgba(255,255,255,.4); }
-  .safety-tag {
-    background: rgba(13,158,117,.15); border: 1px solid rgba(13,158,117,.3);
-    border-radius: 50px; padding: 8px 22px;
-    font-size: 18px; font-weight: 700; color: #0D9E75;
-  }
+  .soc-wa  { background:rgba(37,211,102,.12); border:1px solid rgba(37,211,102,.3); }
+  .soc-ig  { background:rgba(193,53,132,.12); border:1px solid rgba(193,53,132,.3); }
+  .soc-em  { background:rgba(13,158,117,.12); border:1px solid rgba(13,158,117,.3); }
+  .soc-wl  { background:rgba(200,137,42,.14); border:1.5px solid rgba(200,137,42,.55); }
+  .soc-label { font-size:16px; font-weight:600; color:rgba(255,255,255,.85); line-height:1.2; }
+  .soc-sub   { font-size:13px; color:rgba(255,255,255,.4); margin-top:2px; }
 </style>
 </head>
 <body>
 
-<div class="instructions">
-  <strong>How to save at full resolution:</strong> In Chrome, press <strong>F12</strong> → click the three-dot menu (⋮) → <strong>Run command</strong> → type <em>screenshot</em> → click <strong>"Capture node screenshot"</strong> after selecting the card. Or zoom to 50% (Ctrl + −) and use Windows Snipping Tool.
+<div class="tip">
+  <strong>How to save at full resolution:</strong> In Chrome press <strong>F12</strong> → three-dot menu (⋮) → <strong>Run command</strong> → type <em>screenshot</em> → <strong>"Capture node screenshot"</strong> after selecting the card element.
 </div>
 
 <div class="viewport">
 <div class="card">
 
   <!-- Backgrounds -->
-  <div class="bg-top"></div>
-  <div class="bg-bottom"></div>
-  <div class="bg-wave"></div>
-  <div class="bg-dots-light"></div>
-  <div class="bg-dots-dark"></div>
-  <div class="bg-circle-1"></div>
-  <div class="bg-circle-2"></div>
+  <div class="dots"></div>
+  <div class="glow-teal"></div>
+  <div class="glow-gold"></div>
+  <div class="glow-car"></div>
 
-  <!-- Corners -->
-  <div class="corner corner-tl"></div>
-  <div class="corner corner-tr"></div>
-  <div class="corner corner-bl"></div>
-  <div class="corner corner-br"></div>
+  <!-- Corner brackets -->
+  <div class="corner tl"></div>
+  <div class="corner tr"></div>
+  <div class="corner bl"></div>
+  <div class="corner br"></div>
 
-  <!-- ── TOP SECTION ── -->
-  <div class="top-section">
-    <div class="top-row">
-      <div class="logo-row">
-        <svg width="46" height="46" viewBox="0 0 24 24" fill="none">
-          <path d="M12 2L3 7v6c0 5 4 9 9 10 5-1 9-5 9-10V7l-9-5z" fill="rgba(255,255,255,.15)" stroke="white" stroke-width="1.5"/>
-          <path d="M9 12l2 2 4-4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <span class="logo-text">VeloSafe</span>
-      </div>
-      <span class="founding-badge">⭐ Founding Access</span>
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="logo-row">
+      <svg width="46" height="46" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2L3 7v6c0 5 4 9 9 10 5-1 9-5 9-10V7l-9-5z" fill="rgba(13,158,117,.2)" stroke="#0D9E75" stroke-width="1.5"/>
+        <path d="M9 12l2 2 4-4" stroke="#0D9E75" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="logo-name">VeloSafe</span>
     </div>
-
-    <div class="big-label">Riders already on the waitlist</div>
-    <div class="big-number">2,847<span style="font-size:80px;opacity:.5;">+</span></div>
-    <div class="big-number-sub">and growing every day</div>
-
-    <h2 class="headline-2">Join before we launch.<br/><em>Spots are limited.</em></h2>
+    <div class="waitlist-pill">⭐ Join the Waitlist</div>
   </div>
 
-  <!-- ── BOTTOM SECTION ── -->
-  <div class="bottom-section">
+  <!-- HERO TEXT -->
+  <div class="hero">
+    <div class="eyebrow">Riders already signed up</div>
+    <div class="stat-number">2,847<span>+</span></div>
+    <div class="stat-sub">and growing every day</div>
+    <div class="headline">Don't miss your spot.<br/><em>Sign up free today.</em></div>
+  </div>
+
+  <!-- CAR ILLUSTRATION -->
+  <div class="car-wrap">
+    <svg viewBox="0 0 980 260" width="1020" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Ground shadow -->
+      <ellipse cx="490" cy="248" rx="420" ry="14" fill="rgba(0,0,0,.45)"/>
+
+      <!-- Speed lines (motion behind rear) -->
+      <line x1="38" y1="148" x2="118" y2="148" stroke="rgba(13,158,117,.35)" stroke-width="4" stroke-linecap="round"/>
+      <line x1="18" y1="162" x2="108" y2="162" stroke="rgba(13,158,117,.25)" stroke-width="3" stroke-linecap="round"/>
+      <line x1="48" y1="176" x2="122" y2="176" stroke="rgba(13,158,117,.2)" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="28" y1="190" x2="100" y2="190" stroke="rgba(13,158,117,.15)" stroke-width="2" stroke-linecap="round"/>
+
+      <!-- Car body base -->
+      <rect x="120" y="148" width="720" height="90" rx="12" fill="#0B1F3A"/>
+
+      <!-- Car roof / cabin -->
+      <path d="M260 148 Q290 68 370 58 L590 58 Q680 58 720 92 L780 148Z" fill="#0D2847"/>
+
+      <!-- Windshield (front) -->
+      <path d="M688 148 Q714 96 740 78 L778 78 Q792 88 790 148Z" fill="rgba(13,158,117,.55)" stroke="rgba(255,255,255,.15)" stroke-width="1.5"/>
+
+      <!-- Rear window -->
+      <path d="M290 148 Q300 82 360 66 L430 66 L420 148Z" fill="rgba(13,158,117,.45)" stroke="rgba(255,255,255,.12)" stroke-width="1.5"/>
+
+      <!-- Side windows (2 panes) -->
+      <rect x="436" y="72" width="130" height="76" rx="4" fill="rgba(13,158,117,.5)" stroke="rgba(255,255,255,.12)" stroke-width="1.5"/>
+      <rect x="575" y="72" width="106" height="76" rx="4" fill="rgba(13,158,117,.5)" stroke="rgba(255,255,255,.12)" stroke-width="1.5"/>
+
+      <!-- Window divider pillar -->
+      <rect x="568" y="68" width="10" height="84" rx="2" fill="#0B1F3A"/>
+
+      <!-- Driver silhouette (window 2 from left) -->
+      <!-- Head -->
+      <ellipse cx="620" cy="92" rx="22" ry="22" fill="#7B4A2D"/>
+      <!-- Cap brim -->
+      <rect x="598" y="76" width="46" height="10" rx="5" fill="#0D9E75"/>
+      <!-- Cap crown -->
+      <rect x="602" y="64" width="38" height="18" rx="6" fill="#0D9E75"/>
+      <!-- Body / shirt (VeloSafe teal) -->
+      <rect x="598" y="112" width="46" height="36" rx="4" fill="#0D9E75"/>
+      <!-- VS text on shirt -->
+      <text x="621" y="136" font-family="Arial" font-size="12" font-weight="900" fill="white" text-anchor="middle">VS</text>
+      <!-- Neck -->
+      <rect x="611" y="110" width="18" height="10" rx="3" fill="#7B4A2D"/>
+
+      <!-- Door panel lines -->
+      <line x1="430" y1="152" x2="430" y2="232" stroke="rgba(255,255,255,.08)" stroke-width="2"/>
+      <line x1="568" y1="152" x2="568" y2="232" stroke="rgba(255,255,255,.08)" stroke-width="2"/>
+      <line x1="686" y1="152" x2="686" y2="232" stroke="rgba(255,255,255,.08)" stroke-width="2"/>
+
+      <!-- Gold body stripe -->
+      <rect x="120" y="200" width="720" height="6" rx="3" fill="rgba(200,137,42,.65)"/>
+
+      <!-- VeloSafe branding on rear door -->
+      <!-- Shield icon -->
+      <path d="M474 168 L474 160 L462 163 L462 171 C462 176 468 179 468 179 C468 179 474 176 474 171Z" fill="rgba(13,158,117,.9)" stroke="rgba(255,255,255,.2)" stroke-width=".5"/>
+      <path d="M466 170 l1.5 1.5 3-3" stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- Brand text -->
+      <text x="480" y="172" font-family="DM Sans,Arial,sans-serif" font-size="13" font-weight="700" fill="rgba(255,255,255,.7)">VeloSafe</text>
+
+      <!-- Headlight (front right) -->
+      <ellipse cx="838" cy="186" rx="16" ry="12" fill="rgba(255,240,180,.9)" stroke="rgba(255,255,255,.3)" stroke-width="1"/>
+      <!-- Headlight beams -->
+      <line x1="854" y1="178" x2="920" y2="160" stroke="rgba(255,240,180,.3)" stroke-width="3" stroke-linecap="round"/>
+      <line x1="854" y1="186" x2="930" y2="182" stroke="rgba(255,240,180,.25)" stroke-width="3" stroke-linecap="round"/>
+      <line x1="854" y1="194" x2="916" y2="206" stroke="rgba(255,240,180,.2)" stroke-width="2.5" stroke-linecap="round"/>
+
+      <!-- Front grille -->
+      <rect x="822" y="200" width="60" height="28" rx="6" fill="#060F1C" stroke="rgba(13,158,117,.5)" stroke-width="1.5"/>
+      <line x1="822" y1="209" x2="882" y2="209" stroke="rgba(13,158,117,.4)" stroke-width="1.5"/>
+      <line x1="822" y1="218" x2="882" y2="218" stroke="rgba(13,158,117,.4)" stroke-width="1.5"/>
+
+      <!-- Front bumper -->
+      <rect x="810" y="220" width="80" height="14" rx="5" fill="#0D2847"/>
+
+      <!-- Side mirror (front) -->
+      <path d="M800 142 Q818 136 822 148 L800 148Z" fill="#0D2847" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+
+      <!-- Rear light (left) -->
+      <rect x="120" y="172" width="24" height="38" rx="5" fill="rgba(200,30,30,.85)" stroke="rgba(255,100,100,.3)" stroke-width="1"/>
+      <rect x="120" y="172" width="12" height="18" rx="3" fill="rgba(255,80,80,.6)"/>
+
+      <!-- Rear bumper -->
+      <rect x="112" y="220" width="70" height="14" rx="5" fill="#0D2847"/>
+
+      <!-- FRONT WHEEL -->
+      <circle cx="762" cy="234" r="44" fill="#060F1C" stroke="#0D9E75" stroke-width="4"/>
+      <circle cx="762" cy="234" r="32" fill="#0A1828" stroke="rgba(13,158,117,.4)" stroke-width="1.5"/>
+      <!-- Spokes -->
+      <line x1="762" y1="202" x2="762" y2="266" stroke="#0D9E75" stroke-width="3.5" stroke-linecap="round"/>
+      <line x1="730" y1="234" x2="794" y2="234" stroke="#0D9E75" stroke-width="3.5" stroke-linecap="round"/>
+      <line x1="739" y1="211" x2="785" y2="257" stroke="#0D9E75" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="785" y1="211" x2="739" y2="257" stroke="#0D9E75" stroke-width="2.5" stroke-linecap="round"/>
+      <circle cx="762" cy="234" r="12" fill="#0D9E75"/>
+      <circle cx="762" cy="234" r="6" fill="white"/>
+
+      <!-- REAR WHEEL -->
+      <circle cx="250" cy="234" r="44" fill="#060F1C" stroke="#0D9E75" stroke-width="4"/>
+      <circle cx="250" cy="234" r="32" fill="#0A1828" stroke="rgba(13,158,117,.4)" stroke-width="1.5"/>
+      <!-- Spokes -->
+      <line x1="250" y1="202" x2="250" y2="266" stroke="#0D9E75" stroke-width="3.5" stroke-linecap="round"/>
+      <line x1="218" y1="234" x2="282" y2="234" stroke="#0D9E75" stroke-width="3.5" stroke-linecap="round"/>
+      <line x1="227" y1="211" x2="273" y2="257" stroke="#0D9E75" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="273" y1="211" x2="227" y2="257" stroke="#0D9E75" stroke-width="2.5" stroke-linecap="round"/>
+      <circle cx="250" cy="234" r="12" fill="#0D9E75"/>
+      <circle cx="250" cy="234" r="6" fill="white"/>
+
+      <!-- Wheel arches -->
+      <path d="M210 200 Q210 160 250 160 Q290 160 290 200" fill="none" stroke="#0D2847" stroke-width="12"/>
+      <path d="M722 200 Q722 160 762 160 Q802 160 802 200" fill="none" stroke="#0D2847" stroke-width="12"/>
+    </svg>
+  </div>
+
+  <!-- BOTTOM -->
+  <div class="bottom">
 
     <!-- CTA box -->
     <div class="cta-box">
-      <div class="cta-left">
+      <div>
         <div class="cta-label">Sign up free at</div>
         <div class="cta-url">jeremiah-n-erue.github.io/VeloSafe/waitlist</div>
       </div>
@@ -262,35 +327,59 @@
       </div>
     </div>
 
-    <!-- Stats -->
-    <div class="stats-row">
-      <div class="stat-item">
-        <div class="stat-val">412</div>
-        <div class="stat-label">Driver applications</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-val">18</div>
-        <div class="stat-label">Lagos LGAs</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-val">150</div>
-        <div class="stat-label">Founding driver slots</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-val">20%</div>
-        <div class="stat-label">Lowest commission</div>
-      </div>
-    </div>
+    <!-- Social strip -->
+    <div class="social-strip">
 
-    <!-- Bottom row -->
-    <div class="bottom-row">
-      <div class="handle-row">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="rgba(255,255,255,.4)" stroke="none"/></svg>
-        <span class="handle-text">@velosafetechnologies</span>
+      <!-- WhatsApp -->
+      <div class="soc soc-wa">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+          <path d="M17.5 14.5c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.1-.7.2s-.8 1-1 1.2-.4.2-.7 0c-1.8-.9-3-1.7-4.2-3.8-.3-.5.3-.5.9-1.6.1-.2 0-.4-.1-.5L8.7 7.5c-.2-.4-.4-.4-.6-.4H7.6c-.2 0-.5.1-.8.4C5.9 8.4 5.4 9.4 5.4 10.5c0 1.2.6 2.5 2.1 4.2 2.1 2.6 4.7 4.1 6.7 4.4 1.4.2 2.5-.1 3.4-.8.9-.7 1.5-1.7 1.5-2.7 0-.2-.1-.5-.6-.6z" fill="rgba(37,211,102,.9)"/>
+          <path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.3C8.7 21.5 10.3 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3.1.8.8-3-.2-.3C3.9 14.8 3.5 13.4 3.5 12 3.5 7.3 7.3 3.5 12 3.5S20.5 7.3 20.5 12 16.7 20 12 20z" fill="rgba(37,211,102,.9)"/>
+        </svg>
+        <div>
+          <div class="soc-label">WhatsApp</div>
+          <div class="soc-sub">Join our community</div>
+        </div>
       </div>
-      <div class="safety-tag">Lagos Pilot · 2026</div>
-    </div>
 
+      <!-- Instagram -->
+      <div class="soc soc-ig">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(193,53,132,.9)" stroke-width="1.8" stroke-linecap="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r="1" fill="rgba(193,53,132,.9)" stroke="none"/>
+        </svg>
+        <div>
+          <div class="soc-label">Instagram</div>
+          <div class="soc-sub">@velosafetechnologies</div>
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="soc soc-em">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(13,158,117,.9)" stroke-width="1.8" stroke-linecap="round">
+          <rect x="2" y="4" width="20" height="16" rx="3"/>
+          <polyline points="2,4 12,13 22,4"/>
+        </svg>
+        <div>
+          <div class="soc-label">Email us</div>
+          <div class="soc-sub">velosafetechnologies</div>
+        </div>
+      </div>
+
+      <!-- Waitlist -->
+      <div class="soc soc-wl">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2L3 7v6c0 5 4 9 9 10 5-1 9-5 9-10V7l-9-5z" fill="rgba(200,137,42,.2)" stroke="rgba(200,137,42,.9)" stroke-width="1.5"/>
+          <path d="M9 12l2 2 4-4" stroke="rgba(200,137,42,.9)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div>
+          <div class="soc-label" style="color:#C8892A;">Get Founding Access</div>
+          <div class="soc-sub">Limited spots · Free</div>
+        </div>
+      </div>
+
+    </div>
   </div>
 
 </div>
