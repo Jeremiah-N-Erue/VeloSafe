@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>VeloSafe — Join the Waitlist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #111;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px;
+    min-height: 100vh;
+    gap: 16px;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .instructions {
+    color: rgba(255,255,255,.7);
+    font-size: 13px;
+    text-align: center;
+    max-width: 560px;
+    line-height: 1.6;
+    background: rgba(255,255,255,.06);
+    border-radius: 10px;
+    padding: 12px 18px;
+  }
+  .instructions strong { color: #0D9E75; }
+
+  .viewport {
+    width: 540px;
+    height: 540px;
+    overflow: hidden;
+    flex-shrink: 0;
+    border-radius: 4px;
+    box-shadow: 0 32px 80px rgba(0,0,0,.6);
+  }
+
+  /* ── CARD ── 1080 × 1080, scaled to 0.5 */
+  .card {
+    width: 1080px;
+    height: 1080px;
+    transform: scale(0.5);
+    transform-origin: top left;
+    position: relative;
+    overflow: hidden;
+    font-family: 'DM Sans', sans-serif;
+    background: #0B1F3A;
+  }
+
+  /* ── Split background ── */
+  .bg-top {
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 560px;
+    background: linear-gradient(135deg, #0D9E75 0%, #0B7755 40%, #084D38 100%);
+  }
+  .bg-bottom {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 560px;
+    background: linear-gradient(135deg, #0B1F3A 0%, #060D1A 100%);
+  }
+  .bg-wave {
+    position: absolute; top: 480px; left: 0; right: 0; height: 120px; z-index: 2;
+    background: #0B1F3A;
+    clip-path: ellipse(60% 100% at 50% 100%);
+  }
+
+  /* ── Background patterns ── */
+  .bg-dots-light {
+    position: absolute; top: 0; left: 0; right: 0; height: 560px; z-index: 1;
+    background-image: radial-gradient(circle, rgba(255,255,255,.12) 1.5px, transparent 1.5px);
+    background-size: 38px 38px;
+  }
+  .bg-dots-dark {
+    position: absolute; bottom: 0; left: 0; right: 0; height: 520px; z-index: 1;
+    background-image: radial-gradient(circle, rgba(13,158,117,.1) 1.5px, transparent 1.5px);
+    background-size: 38px 38px;
+  }
+  .bg-circle-1 {
+    position: absolute; width: 500px; height: 500px; border-radius: 50%;
+    border: 1px solid rgba(255,255,255,.08);
+    top: -150px; right: -100px; z-index: 1;
+  }
+  .bg-circle-2 {
+    position: absolute; width: 320px; height: 320px; border-radius: 50%;
+    border: 1px solid rgba(255,255,255,.06);
+    top: -60px; right: -20px; z-index: 1;
+  }
+
+  /* ── Corner accents ── */
+  .corner { position: absolute; width: 60px; height: 60px; z-index: 20; }
+  .corner-tl { top: 30px; left: 30px; border-top: 2px solid rgba(255,255,255,.3); border-left: 2px solid rgba(255,255,255,.3); border-radius: 6px 0 0 0; }
+  .corner-tr { top: 30px; right: 30px; border-top: 2px solid rgba(255,255,255,.3); border-right: 2px solid rgba(255,255,255,.3); border-radius: 0 6px 0 0; }
+  .corner-bl { bottom: 30px; left: 30px; border-bottom: 2px solid rgba(13,158,117,.4); border-left: 2px solid rgba(13,158,117,.4); border-radius: 0 0 0 6px; }
+  .corner-br { bottom: 30px; right: 30px; border-bottom: 2px solid rgba(13,158,117,.4); border-right: 2px solid rgba(13,158,117,.4); border-radius: 0 0 6px 0; }
+
+  /* ── Top section ── */
+  .top-section {
+    position: absolute; top: 0; left: 0; right: 0;
+    padding: 50px 64px 0;
+    z-index: 10;
+  }
+  .top-row {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 52px;
+  }
+  .logo-row { display: flex; align-items: center; gap: 14px; }
+  .logo-text { font-family: 'DM Serif Display', serif; font-size: 30px; color: #fff; }
+  .founding-badge {
+    background: rgba(200,137,42,.2);
+    border: 1.5px solid rgba(200,137,42,.6);
+    border-radius: 50px;
+    padding: 10px 26px;
+    font-size: 20px; font-weight: 700;
+    color: #C8892A; letter-spacing: .1em; text-transform: uppercase;
+  }
+
+  .big-label {
+    font-size: 26px; font-weight: 600;
+    color: rgba(255,255,255,.7);
+    text-transform: uppercase; letter-spacing: .12em;
+    margin-bottom: 12px;
+  }
+  .big-number {
+    font-family: 'DM Serif Display', serif;
+    font-size: 148px; line-height: 1;
+    color: #fff;
+    letter-spacing: -4px;
+  }
+  .big-number-sub {
+    font-size: 32px; font-weight: 500;
+    color: rgba(255,255,255,.75);
+    margin-top: 8px; margin-bottom: 48px;
+  }
+
+  .headline-2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 68px; line-height: 1.1;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+  .headline-2 em { font-style: italic; color: rgba(255,255,255,.7); }
+
+  /* ── Bottom section ── */
+  .bottom-section {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 0 64px 52px;
+    z-index: 10;
+  }
+
+  /* CTA URL box */
+  .cta-box {
+    background: rgba(13,158,117,.12);
+    border: 1.5px solid rgba(13,158,117,.5);
+    border-radius: 20px;
+    padding: 28px 36px;
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 32px;
+  }
+  .cta-left { }
+  .cta-label { font-size: 20px; font-weight: 600; color: rgba(255,255,255,.55); margin-bottom: 6px; text-transform: uppercase; letter-spacing: .08em; }
+  .cta-url   { font-size: 26px; font-weight: 700; color: #0D9E75; }
+  .cta-arrow {
+    width: 60px; height: 60px; border-radius: 50%;
+    background: #0D9E75;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  /* Stats strip */
+  .stats-row {
+    display: flex; gap: 0;
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 36px;
+  }
+  .stat-item {
+    flex: 1; padding: 20px 24px; text-align: center;
+    border-right: 1px solid rgba(255,255,255,.08);
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-val   { font-size: 32px; font-weight: 700; color: #fff; line-height: 1; }
+  .stat-label { font-size: 17px; color: rgba(255,255,255,.45); margin-top: 5px; }
+
+  /* Bottom row */
+  .bottom-row {
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .handle-row { display: flex; align-items: center; gap: 10px; }
+  .handle-text { font-size: 20px; color: rgba(255,255,255,.4); }
+  .safety-tag {
+    background: rgba(13,158,117,.15); border: 1px solid rgba(13,158,117,.3);
+    border-radius: 50px; padding: 8px 22px;
+    font-size: 18px; font-weight: 700; color: #0D9E75;
+  }
+</style>
+</head>
+<body>
+
+<div class="instructions">
+  <strong>How to save at full resolution:</strong> In Chrome, press <strong>F12</strong> → click the three-dot menu (⋮) → <strong>Run command</strong> → type <em>screenshot</em> → click <strong>"Capture node screenshot"</strong> after selecting the card. Or zoom to 50% (Ctrl + −) and use Windows Snipping Tool.
+</div>
+
+<div class="viewport">
+<div class="card">
+
+  <!-- Backgrounds -->
+  <div class="bg-top"></div>
+  <div class="bg-bottom"></div>
+  <div class="bg-wave"></div>
+  <div class="bg-dots-light"></div>
+  <div class="bg-dots-dark"></div>
+  <div class="bg-circle-1"></div>
+  <div class="bg-circle-2"></div>
+
+  <!-- Corners -->
+  <div class="corner corner-tl"></div>
+  <div class="corner corner-tr"></div>
+  <div class="corner corner-bl"></div>
+  <div class="corner corner-br"></div>
+
+  <!-- ── TOP SECTION ── -->
+  <div class="top-section">
+    <div class="top-row">
+      <div class="logo-row">
+        <svg width="46" height="46" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2L3 7v6c0 5 4 9 9 10 5-1 9-5 9-10V7l-9-5z" fill="rgba(255,255,255,.15)" stroke="white" stroke-width="1.5"/>
+          <path d="M9 12l2 2 4-4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="logo-text">VeloSafe</span>
+      </div>
+      <span class="founding-badge">⭐ Founding Access</span>
+    </div>
+
+    <div class="big-label">Riders already on the waitlist</div>
+    <div class="big-number">2,847<span style="font-size:80px;opacity:.5;">+</span></div>
+    <div class="big-number-sub">and growing every day</div>
+
+    <h2 class="headline-2">Join before we launch.<br/><em>Spots are limited.</em></h2>
+  </div>
+
+  <!-- ── BOTTOM SECTION ── -->
+  <div class="bottom-section">
+
+    <!-- CTA box -->
+    <div class="cta-box">
+      <div class="cta-left">
+        <div class="cta-label">Sign up free at</div>
+        <div class="cta-url">jeremiah-n-erue.github.io/VeloSafe/waitlist</div>
+      </div>
+      <div class="cta-arrow">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round">
+          <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-row">
+      <div class="stat-item">
+        <div class="stat-val">412</div>
+        <div class="stat-label">Driver applications</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-val">18</div>
+        <div class="stat-label">Lagos LGAs</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-val">150</div>
+        <div class="stat-label">Founding driver slots</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-val">20%</div>
+        <div class="stat-label">Lowest commission</div>
+      </div>
+    </div>
+
+    <!-- Bottom row -->
+    <div class="bottom-row">
+      <div class="handle-row">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="rgba(255,255,255,.4)" stroke="none"/></svg>
+        <span class="handle-text">@velosafetechnologies</span>
+      </div>
+      <div class="safety-tag">Lagos Pilot · 2026</div>
+    </div>
+
+  </div>
+
+</div>
+</div>
+
+</body>
+</html>

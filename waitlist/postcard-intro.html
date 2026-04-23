@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>VeloSafe — Introduction Card</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #111;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 24px;
+    min-height: 100vh;
+    gap: 16px;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .instructions {
+    color: rgba(255,255,255,.7);
+    font-size: 13px;
+    text-align: center;
+    max-width: 560px;
+    line-height: 1.6;
+    background: rgba(255,255,255,.06);
+    border-radius: 10px;
+    padding: 12px 18px;
+  }
+  .instructions strong { color: #0D9E75; }
+
+  /* Clip window — shows the card at 50% scale */
+  .viewport {
+    width: 540px;
+    height: 540px;
+    overflow: hidden;
+    flex-shrink: 0;
+    border-radius: 4px;
+    box-shadow: 0 32px 80px rgba(0,0,0,.6);
+  }
+
+  /* ── ACTUAL CARD ── 1080 × 1080 scaled to 0.5 */
+  .card {
+    width: 1080px;
+    height: 1080px;
+    transform: scale(0.5);
+    transform-origin: top left;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(145deg, #060D1A 0%, #0B1F3A 40%, #0D2E1F 75%, #071A12 100%);
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  /* ── Background layers ── */
+  .bg-dots {
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle, rgba(13,158,117,.18) 1.5px, transparent 1.5px);
+    background-size: 42px 42px;
+  }
+  .bg-glow-1 {
+    position: absolute;
+    width: 700px; height: 700px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(13,158,117,.14) 0%, transparent 70%);
+    top: -150px; right: -150px;
+  }
+  .bg-glow-2 {
+    position: absolute;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,137,42,.08) 0%, transparent 70%);
+    bottom: -100px; left: -50px;
+  }
+  .bg-line-h {
+    position: absolute; left: 0; right: 0;
+    height: 1px; background: linear-gradient(90deg, transparent, rgba(13,158,117,.3), transparent);
+  }
+
+  /* ── Top bar ── */
+  .top-bar {
+    position: absolute; top: 0; left: 0; right: 0;
+    padding: 48px 60px 0;
+    display: flex; align-items: center; justify-content: space-between;
+    z-index: 10;
+  }
+  .logo-row { display: flex; align-items: center; gap: 14px; }
+  .logo-text { font-family: 'DM Serif Display', serif; font-size: 30px; color: #fff; letter-spacing: -.3px; }
+  .top-label {
+    font-size: 20px; font-weight: 600; color: rgba(255,255,255,.4);
+    text-transform: uppercase; letter-spacing: .12em;
+  }
+
+  /* ── Center content ── */
+  .center {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 0 80px;
+    text-align: center;
+    z-index: 10;
+  }
+
+  .introducing-pill {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: rgba(200,137,42,.15);
+    border: 1px solid rgba(200,137,42,.4);
+    border-radius: 50px;
+    padding: 10px 28px;
+    margin-bottom: 44px;
+  }
+  .introducing-pill span { font-size: 22px; font-weight: 700; color: #C8892A; letter-spacing: .14em; text-transform: uppercase; }
+  .introducing-dot { width: 8px; height: 8px; border-radius: 50%; background: #C8892A; }
+
+  .main-headline {
+    font-family: 'DM Serif Display', serif;
+    font-size: 90px;
+    line-height: 1.05;
+    color: #fff;
+    margin-bottom: 30px;
+  }
+  .main-headline em { font-style: italic; color: #0D9E75; }
+
+  .sub-headline {
+    font-size: 30px;
+    color: rgba(255,255,255,.55);
+    font-weight: 400;
+    letter-spacing: .02em;
+    margin-bottom: 64px;
+  }
+  .sub-headline strong { color: #0D9E75; font-weight: 600; }
+
+  /* ── Shield ── */
+  .shield-wrap {
+    margin-bottom: 52px;
+    position: relative;
+  }
+  .shield-glow {
+    position: absolute;
+    width: 200px; height: 200px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(13,158,117,.35) 0%, transparent 70%);
+    top: 50%; left: 50%; transform: translate(-50%,-50%);
+  }
+
+  /* ── Feature strip ── */
+  .features {
+    display: flex; gap: 24px;
+    margin-bottom: 0;
+  }
+  .feat-card {
+    display: flex; align-items: center; gap: 14px;
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 20px;
+    padding: 18px 26px;
+    backdrop-filter: blur(10px);
+  }
+  .feat-icon {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: rgba(13,158,117,.2);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .feat-text { text-align: left; }
+  .feat-title { font-size: 20px; font-weight: 700; color: #fff; line-height: 1.2; }
+  .feat-sub   { font-size: 16px; color: rgba(255,255,255,.45); margin-top: 3px; }
+
+  /* ── Bottom bar ── */
+  .bottom-bar {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 0 60px 50px;
+    display: flex; align-items: center; justify-content: space-between;
+    z-index: 10;
+  }
+  .bottom-bar-line {
+    position: absolute; top: 0; left: 60px; right: 60px;
+    height: 1px; background: rgba(255,255,255,.1);
+  }
+  .bottom-left { display: flex; flex-direction: column; gap: 6px; padding-top: 28px; }
+  .bottom-url  { font-size: 20px; color: #0D9E75; font-weight: 600; }
+  .bottom-handle { font-size: 18px; color: rgba(255,255,255,.35); }
+  .bottom-right { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; padding-top: 28px; }
+  .launch-chip {
+    background: rgba(13,158,117,.15); border: 1px solid rgba(13,158,117,.4);
+    border-radius: 50px; padding: 8px 22px;
+    font-size: 18px; font-weight: 700; color: #0D9E75; letter-spacing: .06em;
+  }
+  .powered-by { font-size: 16px; color: rgba(255,255,255,.3); }
+
+  /* ── Decorative corner lines ── */
+  .corner { position: absolute; width: 60px; height: 60px; z-index: 5; }
+  .corner-tl { top: 30px; left: 30px; border-top: 2px solid rgba(13,158,117,.4); border-left: 2px solid rgba(13,158,117,.4); border-radius: 6px 0 0 0; }
+  .corner-tr { top: 30px; right: 30px; border-top: 2px solid rgba(13,158,117,.4); border-right: 2px solid rgba(13,158,117,.4); border-radius: 0 6px 0 0; }
+  .corner-bl { bottom: 30px; left: 30px; border-bottom: 2px solid rgba(13,158,117,.4); border-left: 2px solid rgba(13,158,117,.4); border-radius: 0 0 0 6px; }
+  .corner-br { bottom: 30px; right: 30px; border-bottom: 2px solid rgba(13,158,117,.4); border-right: 2px solid rgba(13,158,117,.4); border-radius: 0 0 6px 0; }
+</style>
+</head>
+<body>
+
+<div class="instructions">
+  <strong>How to save at full resolution:</strong> In Chrome, press <strong>F12</strong> → click the three-dot menu (⋮) → <strong>Run command</strong> → type <em>screenshot</em> → click <strong>"Capture node screenshot"</strong> after clicking the card element. Or zoom browser to 50% (Ctrl + −) and use Windows Snipping Tool.
+</div>
+
+<div class="viewport">
+<div class="card">
+
+  <!-- Backgrounds -->
+  <div class="bg-dots"></div>
+  <div class="bg-glow-1"></div>
+  <div class="bg-glow-2"></div>
+  <div class="bg-line-h" style="top:160px;"></div>
+  <div class="bg-line-h" style="bottom:160px;"></div>
+
+  <!-- Corner accents -->
+  <div class="corner corner-tl"></div>
+  <div class="corner corner-tr"></div>
+  <div class="corner corner-bl"></div>
+  <div class="corner corner-br"></div>
+
+  <!-- Top bar -->
+  <div class="top-bar">
+    <div class="logo-row">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2L3 7v6c0 5 4 9 9 10 5-1 9-5 9-10V7l-9-5z" fill="rgba(13,158,117,.2)" stroke="#0D9E75" stroke-width="1.5"/>
+        <path d="M9 12l2 2 4-4" stroke="#0D9E75" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="logo-text">VeloSafe</span>
+    </div>
+    <span class="top-label">Lagos Pilot · 2026</span>
+  </div>
+
+  <!-- Center -->
+  <div class="center">
+
+    <!-- Shield -->
+    <div class="shield-wrap">
+      <div class="shield-glow"></div>
+      <svg width="110" height="130" viewBox="0 0 100 118" fill="none">
+        <path d="M50 4L8 20V54C8 80 26 101 50 112C74 101 92 80 92 54V20L50 4Z" fill="rgba(13,158,117,.12)" stroke="#0D9E75" stroke-width="1.8"/>
+        <path d="M50 16L18 29V54C18 75 32 92 50 102C68 92 82 75 82 54V29L50 16Z" fill="rgba(13,158,117,.08)" stroke="rgba(13,158,117,.4)" stroke-width="1" stroke-dasharray="4 3"/>
+        <path d="M34 54l10 10 22-22" stroke="#0D9E75" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+
+    <!-- Pill -->
+    <div class="introducing-pill">
+      <div class="introducing-dot"></div>
+      <span>Introducing</span>
+      <div class="introducing-dot"></div>
+    </div>
+
+    <!-- Headline -->
+    <h1 class="main-headline">Nigeria's Safest<br/>Way <em>to Move.</em></h1>
+
+    <!-- Sub -->
+    <p class="sub-headline">Starting in Lagos &nbsp;·&nbsp; <strong>Built for Africa</strong></p>
+
+    <!-- Features -->
+    <div class="features">
+      <div class="feat-card">
+        <div class="feat-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0D9E75" stroke-width="2" stroke-linecap="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/>
+          </svg>
+        </div>
+        <div class="feat-text">
+          <div class="feat-title">BVN &amp; NIN Verified</div>
+          <div class="feat-sub">Every driver screened</div>
+        </div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0D9E75" stroke-width="2" stroke-linecap="round">
+            <circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 010 20M2 12h20"/>
+          </svg>
+        </div>
+        <div class="feat-text">
+          <div class="feat-title">Live GPS Tracking</div>
+          <div class="feat-sub">Real-time every trip</div>
+        </div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0D9E75" stroke-width="2" stroke-linecap="round">
+            <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+          </svg>
+        </div>
+        <div class="feat-text">
+          <div class="feat-title">Emergency SOS</div>
+          <div class="feat-sub">One tap, instant alert</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="bottom-bar">
+    <div class="bottom-bar-line"></div>
+    <div class="bottom-left">
+      <span class="bottom-url">velosafetechnologies.github.io/VeloSafe</span>
+      <span class="bottom-handle">@velosafetechnologies</span>
+    </div>
+    <div class="bottom-right">
+      <span class="launch-chip">LAUNCHING 2026</span>
+      <span class="powered-by">Safer rides · Stronger cities</span>
+    </div>
+  </div>
+
+</div>
+</div>
+
+</body>
+</html>
